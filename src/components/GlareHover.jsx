@@ -11,7 +11,6 @@ const GlareHover = ({
   className = "",
   style = {},
 }) => {
-  // Glare rengini rgba formatına çevir
   const hex = glareColor.replace("#", "");
   let rgba = glareColor;
   if (/^[\dA-Fa-f]{6}$/.test(hex)) {
@@ -92,10 +91,8 @@ const GlareHover = ({
       onMouseEnter={animateIn}
       onMouseLeave={animateOut}
     >
-      {/* Orijinal metin - her zaman görünür */}
       <span>{children}</span>
       
-      {/* Glare efekti için overlay */}
       <span 
         className="glare-overlay"
         style={overlayStyle}
