@@ -35,7 +35,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 bg-black/20 backdrop-blur-sm">
+      <section id="about" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 ">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
@@ -103,7 +103,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 bg-black/20 backdrop-blur-sm">
+      <section id="projects" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 ">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-16">
             Projelerimiz

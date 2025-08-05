@@ -26,7 +26,7 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#about" className="text-lg font-semibold text-[#b5b5b5a4]  transition-colors">
+                <a href="#about" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
                   Hakkımızda
                 </a>
               </GlareHover>
@@ -40,7 +40,7 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#services" className="text-lg font-semibold text-[#b5b5b5a4]  transition-colors">
+                <a href="#services" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
                   Hizmetler
                 </a>
               </GlareHover>
@@ -54,7 +54,7 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#projects" className="text-lg font-semibold text-[#b5b5b5a4]  transition-colors">
+                <a href="#projects" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
                   Projeler
                 </a>
               </GlareHover>
@@ -68,7 +68,7 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#contact" className="text-lg font-semibold text-[#b5b5b5a4]  transition-colors">
+                <a href="#contact" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
                   İletişim
                 </a>
               </GlareHover>
