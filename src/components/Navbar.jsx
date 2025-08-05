@@ -1,5 +1,5 @@
 import React from 'react';
-import GradientText from './GradientText';
+import GlareHover from './GlareHover';
 import ShinyText from './ShinyText';
 
 const Navbar = () => {
@@ -15,35 +15,56 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-4 gap-5">
                 
-          <GradientText 
-              className="text-2xl md:text-3xl "
-              colors={["#ffaa40", "#9c40ff", "#ffaa40"]}
-              animationSpeed={6}
-            >
-              Şirororo
-            </GradientText>
-            <GradientText 
-              className="text-2xl md:text-3xl "
-              colors={["#ffaa40", "#9c40ff", "#ffaa40"]}
-              animationSpeed={6}
-            >
-              Şirororo
-            </GradientText>     <GradientText 
-              className="text-2xl md:text-3xl "
-              colors={["#ffaa40", "#9c40ff", "#ffaa40"]}
-              animationSpeed={6}
-            >
-              Şirororo
-            </GradientText>     <GradientText 
-              className="text-2xl md:text-3xl "
-              colors={["#ffaa40", "#9c40ff", "#ffaa40"]}
-              animationSpeed={6}
-            >
-              Şirororo
-            </GradientText>
-     
+            <GlareHover
+    glareColor="#3e98a3"
+    glareOpacity={0.9}
+    glareAngle={-30}
+    glareSize={300}
+    transitionDuration={800}
+    playOnce={false}
+  >
+    <h2 style={{ fontSize: '1.5rem', fontWeight: '900', color: '#cccccc', margin: 0 }}>
+      Hover Me
+    </h2>
+  </GlareHover>
+  <GlareHover
+    glareColor="#3e98a3"
+    glareOpacity={0.9}
+    glareAngle={-30}
+    glareSize={300}
+    transitionDuration={800}
+    playOnce={false}
+  >
+    <h2 style={{ fontSize: '1.5rem', fontWeight: '900', color: '#cccccc', margin: 0 }}>
+      Hover Me
+    </h2>
+  </GlareHover>
+  <GlareHover
+    glareColor="#3e98a3"
+    glareOpacity={0.9}
+    glareAngle={-30}
+    glareSize={300}
+    transitionDuration={800}
+    playOnce={false}
+  >
+    <h2 style={{ fontSize: '1.5rem', fontWeight: '900', color: '#cccccc', margin: 0 }}>
+      Hover Me
+    </h2>
+  </GlareHover>
+  <GlareHover
+    glareColor="#3e98a3"
+    glareOpacity={0.9}
+    glareAngle={-30}
+    glareSize={300}
+    transitionDuration={800}
+    playOnce={false}
+  >
+    <h2 style={{ fontSize: '1.5rem', fontWeight: '900', color: '#cccccc', margin: 0 }}>
+      Hover Me
+    </h2>
+  </GlareHover>
   
             </div>
           </div>
