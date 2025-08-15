@@ -7,7 +7,7 @@ const Ribbons = ({
   baseSpring = 0.03,
   baseFriction = 0.9,
   baseThickness = 30,
-  offsetFactor = 0.05,
+  offsetFactor = 0.04,
   maxAge = 500,
   pointCount = 50,
   speedMultiplier = 0.6,
@@ -15,8 +15,7 @@ const Ribbons = ({
   enableShaderEffect = false,
   effectAmplitude = 2,
   backgroundColor = [0, 0, 0, 0],
-  zIndex = 2000,            // set high to sit above MUI AppBar/Drawers, but below tooltips if you want
-  asBackground = false,     // set true if you want it behind your UI (see note below)
+
 }) => {
   const containerRef = useRef(null);
 

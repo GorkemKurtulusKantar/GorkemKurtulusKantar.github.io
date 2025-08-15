@@ -1,9 +1,12 @@
 
+
 import Background from './components/Background'
 import GlareHover from './components/GlareHover'
 import Navbar from './components/Navbar'
 import Ribbons from './components/Ribbons'
+import SpotlightCard from './components/SpotlightCard'
 import './index.css'
+
 
 function App() {
   return (
@@ -23,57 +26,24 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 mt-16">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
-            Hoş Geldiniz
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Modern ve etkileyici web deneyimleri yaratıyoruz
-          </p>
-          <GlareHover
-            glareColor="#3e98a3"
-            glareOpacity={0.9}
-            glareAngle={-30}
-            glareSize={300}
-            transitionDuration={800}
-            playOnce={false}
-          >
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xl font-bold rounded-lg hover:scale-105 transition-transform">
-              Başlayın
-            </button>
-          </GlareHover>
+
+ 
         </div>
       </section>
 
       {/* About Section */}
       <section id="about" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 ">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-6xl mx-auto text-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
               Hakkımızda
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
               Yaratıcılık ve teknolojiyi birleştirerek, kullanıcı deneyimini ön planda tutan 
               çözümler geliştiriyoruz. Modern web teknolojileri ile hayallerinizi gerçeğe dönüştürüyoruz.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-white mb-2">100+</h3>
-              <p className="text-gray-300">Tamamlanan Proje</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-white mb-2">50+</h3>
-              <p className="text-gray-300">Mutlu Müşteri</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-white mb-2">24/7</h3>
-              <p className="text-gray-300">Destek</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-white mb-2">5+</h3>
-              <p className="text-gray-300">Yıl Deneyim</p>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -84,30 +54,38 @@ function App() {
             Hizmetlerimiz
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg hover:bg-white/20 transition-colors">
+            
+            <SpotlightCard>
               <div className="text-4xl mb-4">💻</div>
               <h3 className="text-2xl font-bold text-white mb-4">Web Geliştirme</h3>
               <p className="text-gray-300">
                 Modern ve responsive web siteleri geliştiriyoruz. React, Vue.js ve diğer 
                 güncel teknolojileri kullanarak performanslı çözümler sunuyoruz.
               </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg hover:bg-white/20 transition-colors">
+            </SpotlightCard>
+            <SpotlightCard>
               <div className="text-4xl mb-4">📱</div>
               <h3 className="text-2xl font-bold text-white mb-4">Mobil Uygulama</h3>
               <p className="text-gray-300">
                 iOS ve Android platformları için native ve cross-platform mobil 
                 uygulamalar geliştiriyoruz.
               </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg hover:bg-white/20 transition-colors">
+            </SpotlightCard>
+            <SpotlightCard>
               <div className="text-4xl mb-4">🎨</div>
               <h3 className="text-2xl font-bold text-white mb-4">UI/UX Tasarım</h3>
               <p className="text-gray-300">
                 Kullanıcı deneyimini ön planda tutan, modern ve estetik tasarımlar 
                 oluşturuyoruz.
               </p>
-            </div>
+            </SpotlightCard>
+ 
+
+
+
+   
+
+
           </div>
         </div>
       </section>
