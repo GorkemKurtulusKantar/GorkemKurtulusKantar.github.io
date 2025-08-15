@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 const Background = () => {
@@ -65,7 +65,7 @@ const Background = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: "100vw", height: "100vh", position: "fixed", top: 0, left: 0, zIndex: 0 ,pointerEvents: "none"}} />;
+  return <div ref={mountRef} style={{ width: "100vw", height: "100vh", position: "fixed", top: 0, left: 0, zIndex: -1 ,pointerEvents: "none"}} />;
 };
 
 export default Background;

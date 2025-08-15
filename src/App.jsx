@@ -2,14 +2,24 @@
 import Background from './components/Background'
 import GlareHover from './components/GlareHover'
 import Navbar from './components/Navbar'
+import Ribbons from './components/Ribbons'
 import './index.css'
 
 function App() {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden ">
       <Background />
+
       <Navbar />
-      
+            <Ribbons
+    baseThickness={5}
+    colors={['#754d45',"#284261","#55a058"]}
+    speedMultiplier={0.44}
+    maxAge={500}
+
+    enableShaderEffect={true}
+  />
+
       {/* Hero Section */}
       <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 mt-16">
         <div className="text-center max-w-4xl mx-auto">
@@ -172,6 +182,7 @@ function App() {
           </p>
         </div>
       </footer>
+
     </div>
   )
 }
