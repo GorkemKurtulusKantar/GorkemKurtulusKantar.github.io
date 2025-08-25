@@ -1,8 +1,10 @@
 
 
 import Background from './components/Background'
+import CurveDemo from './components/CurveDemo'
 import GlareHover from './components/GlareHover'
 import Navbar from './components/Navbar'
+import Reveal from './components/Reveal'
 import Ribbons from './components/Ribbons'
 import SpotlightCard from './components/SpotlightCard'
 import './index.css'
@@ -25,14 +27,17 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 mt-16">
+        <Reveal>
         <div className="text-center max-w-4xl mx-auto">
 
  
         </div>
+        </Reveal>
       </section>
 
       {/* About Section */}
       <section id="about" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 ">
+        <Reveal>
         <div className="max-w-6xl mx-auto text-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
@@ -45,10 +50,12 @@ function App() {
           </div>
 
         </div>
+        </Reveal>
       </section>
 
       {/* Services Section */}
       <section id="services" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16">
+        <Reveal>
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-16">
             Hizmetlerimiz
@@ -83,15 +90,17 @@ function App() {
 
 
 
-   
+  
 
 
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16 ">
+        <Reveal>
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-16">
             Projelerimiz
@@ -113,10 +122,19 @@ function App() {
             </div>
           </div>
         </div>
+        </Reveal>
+      </section>
+
+      {/* Curve Editor Section */}
+      <section id="curve-editor" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16">
+        <Reveal>
+        <CurveDemo />
+        </Reveal>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16">
+        <Reveal>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
             İletişim
@@ -150,6 +168,7 @@ function App() {
             </div>
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* Footer */}
