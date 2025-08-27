@@ -51,11 +51,25 @@ const Background = () => {
       new THREE.Vector3(13.25, -8.98, 0.83)
     ]);
 
-
+    // Create 8 orbital balls
+    const orbitalBalls = [];
+    const ballColors = [
+      0xff6b6b, 0x4ecdc4, 0x45b7d1, 0x96ceb4, 
+      0xfeca57, 0xff9ff3, 0x54a0ff, 0x5f27cd
+    ];
     
+    for (let i = 0; i < 8; i++) {
+      const ballGeometry = new THREE.SphereGeometry(0.3, 16, 16);
+      const ballMaterial = new THREE.MeshStandardMaterial({ 
+        color: ballColors[i],
+        emissive: ballColors[i],
+        emissiveIntensity: 0.2
+      });
+      const ball = new THREE.Mesh(ballGeometry, ballMaterial);
+      orbitalBalls.push(ball);
+      scene.add(ball);
+    }
     
-
-
     // Visualize the curve path 
     const points = curve.getPoints(100);
     const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
@@ -144,7 +158,9 @@ const Background = () => {
       }
     );
 
-    camera.position.z = 50;
+    camera.position.z = 40;
+    camera.position.y = 10;
+
 
     const resize = () => {
 
@@ -181,6 +197,27 @@ const Background = () => {
             planet.rotation.x += 0.005;
             planet.rotation.y += 0.01;
         }
+        
+        // Animate orbital balls
+        const time = clock.getElapsedTime();
+        orbitalBalls.forEach((ball, index) => {
+          const angle = (time * 0.2) + (index * Math.PI * 2) / 8; // Slower orbit (0.5 -> 0.2)
+          const orbitRadius = 20;
+          const orbitHeight = 8;
+          
+          // Create 3D elliptical orbit - much closer to screen on one side
+          ball.position.x = Math.cos(angle) * orbitRadius;
+          ball.position.y = Math.sin(angle) * orbitHeight;
+          ball.position.z = Math.sin(angle) * 35; // Much more dramatic depth (15 -> 35)
+          
+          // Scale balls based on distance (closer = bigger, more dramatic)
+          const scale = 1 + (ball.position.z + 35) * 0.03;
+          ball.scale.setScalar(scale);
+          
+          // Add subtle rotation to each ball
+          ball.rotation.x += 0.01;
+          ball.rotation.y += 0.015;
+        });
         
         renderer.render(scene, camera);
     };

@@ -29,7 +29,8 @@ const Reveal = ({ children, offset = '0px', duration = 600, delay = 0, className
       style={{
         transform: isVisible ? 'translateY(0px)' : 'translateY(-20px)',
         opacity: isVisible ? 1 : 0,
-        transition: `transform ${duration}ms ease, opacity ${duration}ms ease`,
+        filter: isVisible ? 'blur(0px)' : 'blur(10px)',
+        transition: `transform ${duration}ms ease, opacity ${duration}ms ease, filter ${duration}ms ease`,
         transitionDelay: `${delay}ms`
       }}
     >
