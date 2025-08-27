@@ -46,7 +46,7 @@ export function ExpandableCardDemo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             aria-hidden="true"
-            className="fixed inset-0 z-10 h-full w-full bg-black/20"
+            className="fixed inset-0 z-10 h-full w-full"
             onClick={() => setActive(null)}
           />
         ) : null}
@@ -100,12 +100,7 @@ export function ExpandableCardDemo() {
                     >
                       {active.description}
                     </motion.p>
-                    <motion.div
-                      layoutId={`category-${active.title}-${id}`}
-                      className="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full mb-4"
-                    >
-                      {active.category}
-                    </motion.div>
+     
                   </div>
 
                   <div className="flex gap-2 ml-4">
@@ -264,6 +259,7 @@ const cards = [
       </p>
     ),
     technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
+
   },
   {
     description: "Metallica",

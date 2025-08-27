@@ -58,11 +58,11 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="relative z-10 min-h-screen flex items-center justify-center md:justify-end px-4 py-16">
+      <section id="services" className="relative z-10 min-h-screen  flex items-center justify-center md:justify-end px-4 py-16">
         <Reveal>
-          <div ref={servicesContainerRef} className="max-w-6xl mx-auto text-center" style={{ position: 'relative' }}>
+          <div ref={servicesContainerRef} className="max-w-6xl mx-auto text-end " style={{ position: 'relative' }}>
             <VariableProximity
-              label="Hizmetlerimiz"
+              label="Projects"
               fromFontVariationSettings="'wght' 400, 'opsz' 14"
               toFontVariationSettings="'wght' 800, 'opsz' 60"
               containerRef={servicesContainerRef}
