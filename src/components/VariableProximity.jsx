@@ -54,6 +54,7 @@ const VariableProximity = forwardRef((props, ref) => {
     className = "",
     onClick,
     style,
+    disabled,
     ...restProps
   } = props;
 
@@ -96,7 +97,15 @@ const VariableProximity = forwardRef((props, ref) => {
     }
   };
 
+  useEffect(() => {
+  if (!disabled) return;
+  letterRefs.current.forEach(el => {
+    if (el) el.style.fontVariationSettings = fromFontVariationSettings;
+  });
+}, [disabled, fromFontVariationSettings]);
+
   useAnimationFrame(() => {
+      if (disabled) return;                
     if (!containerRef?.current) return;
     const { x, y } = mousePositionRef.current;
     if (lastPositionRef.current.x === x && lastPositionRef.current.y === y) {

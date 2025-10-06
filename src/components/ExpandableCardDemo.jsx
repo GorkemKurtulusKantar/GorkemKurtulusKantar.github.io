@@ -8,6 +8,7 @@ export function ExpandableCardDemo() {
   const [active, setActive] = useState(null);
   const ref = useRef(null);
   const id = useId();
+  
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -188,6 +189,7 @@ style={{position: 'relative'}} >
                   radius={100}
                   falloff='gaussian'
                   className="text-2xl "
+                  disabled={!!active}
                 />
 
               </motion.div>
