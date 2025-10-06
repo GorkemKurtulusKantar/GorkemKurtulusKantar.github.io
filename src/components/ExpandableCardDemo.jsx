@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { useOutsideClick } from "../hooks/UseOutsideClick";
 import VariableProximity from "./VariableProximity";
-
+import { Github } from "lucide-react";
 
 export function ExpandableCardDemo() {
   const [active, setActive] = useState(null);
@@ -11,19 +11,23 @@ export function ExpandableCardDemo() {
   
 
   useEffect(() => {
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") setActive(null);
-    };
-
-    // Body scroll kilitleme (modal açıkken)
-    const prevOverflow = document.body.style.overflow;
-    if (active) document.body.style.overflow = "hidden";
-
+    function onKeyDown() {
+      if (event.key === "Escape") {
+        setActive(false);
+      }
+    }
+  
+   
+    if (typeof window !== "undefined") {
+      if (active && typeof active === "object" && window.innerWidth < 1024) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    }
+  
     window.addEventListener("keydown", onKeyDown);
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = prevOverflow || "auto";
-    };
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
 
   useOutsideClick(ref, () => setActive(null));
@@ -47,7 +51,7 @@ export function ExpandableCardDemo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             aria-hidden="true"
-            className="fixed inset-0 z-10 h-full w-full"
+            className=" inset-0 z-10 h-full w-full"
             onClick={() => setActive(null)}
           />
         ) : null}
@@ -56,14 +60,14 @@ export function ExpandableCardDemo() {
       {/* Dialog / Expanded card */}
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 z-[100] grid place-items-center">
-            <motion.button
+          <div className="fixed inset-0 z-[100] flex items-start justify-end pe-[200px] overflow-visible">           
+           <motion.button
               key={`button-${active.title}-${id}`}
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white  lg:hidden"
+              className=" right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white  lg:hidden "
               aria-label="Close dialog"
               onClick={() => setActive(null)}
             >
@@ -78,7 +82,7 @@ export function ExpandableCardDemo() {
               aria-modal="true"
               aria-labelledby={dialogLabelId}
               aria-describedby={dialogDescId}
-              className="flex h-full w-full max-w-[600px] flex-col overflow-hidden bg-black md:h-fit md:max-h-[90%] sm:rounded-3xl shadow-2xl"
+              className="flex h-full w-[600px]  flex-col overflow-hidden bg-black md:h-fit  sm:rounded-3xl shadow-2xl"
             >
  
 
@@ -171,15 +175,15 @@ export function ExpandableCardDemo() {
       </AnimatePresence>
 
       {/* List */}
-      <ul className="mx-auto w-full max-w-2xl gap-4">
+      <ul className="mx-auto w-full max-w-2xl ">
         {cards.map((card) => (
           <li key={`li-${card.title}-${id}`}>
             <motion.div
               layoutId={`card-${card.title}-${id}`}
               onClick={() => setActive(card)}
-              className="flex cursor-pointer flex-col justify-between rounded-xl p-4 md:flex-row md:justify-end"
+              className="flex cursor-pointer flex-col justify-between rounded-xl p-4 md:flex-row md:justify-end "
             >
-                <motion.div className="flex flex-col gap-4 md:flex-row "  ref={containerRef}
+                <motion.div className="flex flex-col gap-20 md:flex-row "  ref={containerRef}
 style={{position: 'relative'}} >
                 <VariableProximity
                   label={card.title}  
@@ -188,7 +192,7 @@ style={{position: 'relative'}} >
                   containerRef={containerRef}
                   radius={100}
                   falloff='gaussian'
-                  className="text-2xl "
+                  className="text-2xl my-8 "
                   disabled={!!active}
                 />
 
@@ -229,84 +233,79 @@ export const CloseIcon = () => {
   );
 };
 
-// Demo data (değiştirebilirsiniz)
+// Project data
 const cards = [
   {
-    description: "Lana Del Rey",
-    title: "Summertime Sadness",
-    src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
+    title: "Realtime Chat App",
+    description: "WebSocket chat with rooms, typing indicators and persistence.",
+    src: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Live",
+    ctaLink: "https://example.com/chat",
+    githubLink: "https://github.com/yourname/realtime-chat",
+    technologies: ["React", "Vite", "Socket.io", "Express", "Redis"],
     content: () => (
       <p>
-        Lana Del Rey, an iconic American singer-songwriter, is celebrated for her melancholic and cinematic music style.
-        Born Elizabeth Woolridge Grant in New York City, she has captivated audiences worldwide with her haunting voice
-        and introspective lyrics. <br /> <br />
+        Full‑stack realtime messenger with public/private rooms, presence and message history.
+        Optimistic UI and rate‑limited server endpoints.
       </p>
     ),
-    technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
   },
   {
-    description: "Babbu Maan",
-    title: "Mitran Di Chhatri",
-    src: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
+    title: "3D Product Viewer",
+    description: "Configurable 3D viewer using Three.js and GLTF.",
+    src: "https://images.unsplash.com/photo-1549921296-3b4a4f7f5f32?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Demo",
+    ctaLink: "https://example.com/3d-viewer",
+    githubLink: "https://github.com/yourname/3d-product-viewer",
+    technologies: ["React", "Three.js", "GLTF", "Tailwind"],
     content: () => (
       <p>
-        Babu Maan, a legendary Punjabi singer, is renowned for his soulful voice and profound lyrics that resonate deeply
-        with his audience. Born in the village of Khant Maanpur in Punjab, India, he has become a cultural icon in the
-        Punjabi music industry. <br /> <br />
-
+        Variant switching, dynamic materials and orbit controls, tuned with lazy loading
+        and GPU instancing for smooth performance.
       </p>
     ),
-    technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
-
   },
   {
-    description: "Metallica",
-    title: "For Whom The Bell Tolls",
-    src: "https://assets.aceternity.com/demos/metallica.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
+    title: "Analytics Dashboard",
+    description: "Aggregated metrics with charts and role‑based access.",
+    src: "https://images.unsplash.com/photo-1551281044-8af2b9b66037?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "View",
+    ctaLink: "https://example.com/analytics",
+    githubLink: "https://github.com/yourname/analytics-dashboard",
+    technologies: ["React", "PostgreSQL", "Prisma", "zod"],
     content: () => (
       <p>
-        Metallica, an iconic American heavy metal band, is renowned for their powerful sound and intense performances that
-        resonate deeply with their audience. Formed in Los Angeles, California, they have become a cultural icon in the heavy
-        metal music industry. <br /> <br />
-
+        Multi‑tenant analytics with daily rollups, filters and CSV export. Charts are
+        virtualized for large datasets.
       </p>
     ),
-    technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
   },
   {
-    description: "Led Zeppelin",
-    title: "Stairway To Heaven",
-    src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
+    title: "E‑commerce API",
+    description: "Modular REST API with payments and webhooks.",
+    src: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Docs",
+    ctaLink: "https://example.com/shop-api",
+    githubLink: "https://github.com/yourname/ecommerce-api",
+    technologies: ["Node.js", "Express", "Stripe", "JWT", "Jest"],
     content: () => (
       <p>
-        Led Zeppelin, a legendary British rock band, is renowned for their innovative sound and profound impact on the music
-        industry. Formed in London in 1968, they have become a cultural icon in the rock music world. <br /> <br />
-
+        Products, carts, checkout and Stripe payments. Signed webhooks and idempotent operations.
       </p>
     ),
-    technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
   },
   {
-    description: "Mustafa Zahid",
-    title: "Toh Phir Aao",
-    src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
+    title: "Portfolio v2",
+    description: "This site: motion effects, ribbons and 3D background.",
+    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Source",
+    ctaLink: "https://github.com/yourname/portfolio-v2",
+    githubLink: "https://github.com/yourname/portfolio-v2",
+    technologies: ["React", "Framer Motion", "OGL", "Three.js", "Tailwind"],
     content: () => (
       <p>
-        "Aawarapan", a Bollywood movie starring Emraan Hashmi, is renowned for its intense storyline and powerful
-        performances. Directed by Mohit Suri, the film has become a significant work in the Indian film industry. <br /> <br />
- 
+        Custom ribbon shader, font‑variation proximity, and a GLTF planet path animation using rAF.
       </p>
     ),
-    technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
   },
 ];
