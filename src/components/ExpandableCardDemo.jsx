@@ -51,7 +51,7 @@ export function ExpandableCardDemo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             aria-hidden="true"
-            className=" inset-0 z-10 h-full w-full"
+            className="absolute inset-0 z-10 h-full w-full"
             onClick={() => setActive(null)}
           />
         ) : null}
@@ -60,7 +60,7 @@ export function ExpandableCardDemo() {
       {/* Dialog / Expanded card */}
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 z-[100] flex items-start justify-end pe-[200px] overflow-visible">           
+          <div className="fixed inset-0 z-[100] flex justify-end pe-[30%] overflow-visible">           
            <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -75,14 +75,14 @@ export function ExpandableCardDemo() {
             </motion.button>
 
 
-  <motion.div
+            <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
               role="dialog"
               aria-modal="true"
               aria-labelledby={dialogLabelId}
               aria-describedby={dialogDescId}
-              className="flex h-full w-[600px]  flex-col overflow-hidden bg-black md:h-fit  sm:rounded-3xl shadow-2xl"
+              className="flex h-full w-full  flex-col overflow-hidden bg-black   sm:rounded-3xl shadow-2xl"
             >
  
 
@@ -175,7 +175,7 @@ export function ExpandableCardDemo() {
       </AnimatePresence>
 
       {/* List */}
-      <ul className="mx-auto w-full max-w-2xl ">
+      <ul className=" w-full max-w-7xl ">
         {cards.map((card) => (
           <li key={`li-${card.title}-${id}`}>
             <motion.div
@@ -183,7 +183,7 @@ export function ExpandableCardDemo() {
               onClick={() => setActive(card)}
               className="flex cursor-pointer flex-col justify-between rounded-xl p-4 md:flex-row md:justify-end "
             >
-                <motion.div className="flex flex-col gap-20 md:flex-row "  ref={containerRef}
+                <motion.div className="flex flex-col md:flex-row "  ref={containerRef}
 style={{position: 'relative'}} >
                 <VariableProximity
                   label={card.title}  
@@ -192,7 +192,7 @@ style={{position: 'relative'}} >
                   containerRef={containerRef}
                   radius={100}
                   falloff='gaussian'
-                  className="text-2xl my-8 "
+                  className="text-3xl my-4s "
                   disabled={!!active}
                 />
 
