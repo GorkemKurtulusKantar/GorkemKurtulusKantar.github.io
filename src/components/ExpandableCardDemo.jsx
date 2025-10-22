@@ -51,7 +51,7 @@ export function ExpandableCardDemo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             aria-hidden="true"
-            className="absolute inset-0 z-10 h-full w-full"
+            className="absolute inset-0 z-10 h-full w-full max-[1080px]:bg-black"
             onClick={() => setActive(null)}
           />
         ) : null}
@@ -60,19 +60,8 @@ export function ExpandableCardDemo() {
       {/* Dialog / Expanded card */}
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 z-[100] flex justify-end pe-[30%] overflow-visible">           
-           <motion.button
-              key={`button-${active.title}-${id}`}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className=" right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white  lg:hidden "
-              aria-label="Close dialog"
-              onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
+          <div className="fixed inset-0 z-[100] flex justify-end pe-[50%] max-[1080px]:pe-0 overflow-visible ">           
+
 
 
             <motion.div
@@ -82,8 +71,7 @@ export function ExpandableCardDemo() {
               aria-modal="true"
               aria-labelledby={dialogLabelId}
               aria-describedby={dialogDescId}
-              className="flex h-full w-full  flex-col overflow-hidden bg-black   sm:rounded-3xl shadow-2xl"
-            >
+              className="flex h-full w-full  flex-col overflow-hidden bg-white/20 dark:bg-neutral-900/30 backdrop-blur-md border border-white/20 dark:border-white/10   sm:rounded-3xl shadow-2xl"            >
  
 
               <div className="flex-1 overflow-hidden">
@@ -169,13 +157,12 @@ export function ExpandableCardDemo() {
                 </div>
               </div>
             </motion.div>
-
           </div>
         ) : null}
       </AnimatePresence>
 
       {/* List */}
-      <ul className=" w-full max-w-7xl ">
+      <ul className=" w-full  ">
         {cards.map((card) => (
           <li key={`li-${card.title}-${id}`}>
             <motion.div

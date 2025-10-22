@@ -60,7 +60,7 @@ function App() {
       {/* Services Section */}
       <section id="services" className="relative z-10 min-h-screen  flex items-center justify-center md:justify-end px-4 py-16">
         <Reveal className='w-2/3 px-4'>
-          <div ref={servicesContainerRef} className="  text-end  max-w-7xl" >
+          <div ref={servicesContainerRef} className="  text-end  " >
             <VariableProximity
               label="Projects"
               fromFontVariationSettings="'wght' 400, 'opsz' 14"
