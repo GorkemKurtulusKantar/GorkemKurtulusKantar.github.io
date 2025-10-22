@@ -41,7 +41,7 @@ export function ExpandableCardDemo() {
 
 
   return (
-    <div>
+    <div className="py-6">
       {/* Backdrop */}
       <AnimatePresence>
         {active ? (
@@ -51,7 +51,7 @@ export function ExpandableCardDemo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             aria-hidden="true"
-            className="absolute inset-0 z-10 h-full w-full max-[1080px]:bg-black"
+            className="absolute inset-0 z-10 h-full w-full max-[1080px]:bg-stone-900/95 rounded-3xl"
             onClick={() => setActive(null)}
           />
         ) : null}
@@ -60,7 +60,7 @@ export function ExpandableCardDemo() {
       {/* Dialog / Expanded card */}
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 z-[100] flex justify-end pe-[50%] max-[1080px]:pe-0 overflow-visible ">           
+          <div className="fixed inset-0 z-[100] flex justify-end pe-[50%] max-[1080px]:pe-0  overflow-visible ">           
 
 
 
@@ -71,18 +71,18 @@ export function ExpandableCardDemo() {
               aria-modal="true"
               aria-labelledby={dialogLabelId}
               aria-describedby={dialogDescId}
-              className="flex h-full w-full  flex-col overflow-hidden bg-white/20 dark:bg-neutral-900/30 backdrop-blur-md border border-white/20 dark:border-white/10   sm:rounded-3xl shadow-2xl"            >
+              className="flex h-full w-full  flex-col overflow-hidden bg-white/20 dark:bg-neutral-900/30 backdrop-blur-md border border-white/20 dark:border-white/10   rounded-3xl shadow-2xl"            >
  
 
               <div className="flex-1 overflow-hidden">
-                <div className="flex items-start justify-between p-6">
+                <div className="flex items-start justify-between p-6 text-start">
                   <div className="flex-1 min-w-0">
                     <motion.h3
                       id={dialogLabelId}
                       layoutId={`title-${active.title}-${id}`}
-                      className="text-2xl font-bold text-neutral-800 dark:text-neutral-100 mb-2"
+                      className="text-2xl font-bold text-neutral-800 text-neutral-100 mb-2 "
                     >
-                      <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                      <span className="text-sm text-neutral-500 text-neutral-400">
                         {active.title}
                       </span>
                     </motion.h3>
@@ -140,7 +140,7 @@ export function ExpandableCardDemo() {
                   </motion.div>
                 </div>
 
-                <div className="flex-1 px-6 pb-6 overflow-auto">
+                <div className="flex-1 px-6 pb-6 overflow-auto text-start">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
@@ -194,31 +194,6 @@ style={{position: 'relative'}} >
   );
 }
 
-export const CloseIcon = () => {
-  return (
-    <motion.svg
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.05 } }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4 text-black"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </motion.svg>
-  );
-};
 
 // Project data
 const cards = [

@@ -27,7 +27,7 @@ const Navbar = () => {
                 playOnce={false}
               >
                 <a href="#about" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Hakkımızda
+                  About
                 </a>
               </GlareHover>
 
@@ -40,8 +40,8 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#services" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Hizmetler
+                <a href="#projects" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
+                  Projects
                 </a>
               </GlareHover>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
                 playOnce={false}
               >
                 <a href="#projects" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Projeler
+                  Projects
                 </a>
               </GlareHover>
 
