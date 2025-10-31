@@ -5,6 +5,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'nunito': ['Nunito Sans', 'sans-serif'],
+        'roboto-flex': ['Roboto Flex', 'sans-serif'],
+        'sans': ['Inter', 'Montserrat', 'Nunito Sans', 'system-ui', 'sans-serif'],
+      },
       colors: {
         // Özel renkler
         primary: '#3B82F6',

@@ -6,9 +6,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 w-full">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 mt-1">
           {/* Logo/Brand */}
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <ShinyText text="Şirororo" disabled={false} speed={3} className="text-2xl md:text-3xl text-center" />
           </div>
 
@@ -26,8 +26,8 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#about" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  About
+                <a href="#about" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
+                  Hakkımızda
                 </a>
               </GlareHover>
 
@@ -40,8 +40,8 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#projects" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Projects
+                <a href="#projects" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
+                  Projeler
                 </a>
               </GlareHover>
 
@@ -54,8 +54,8 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#projects" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Projects
+                <a href="#projects" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
+                  Deneyimler
                 </a>
               </GlareHover>
 
@@ -68,8 +68,8 @@ const Navbar = () => {
                 transitionDuration={900}
                 playOnce={false}
               >
-                <a href="#contact" className=" font-semibold text-[#b5b5b5a4]  transition-colors">
-                  İletişim
+                <a href="#contact" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
+                  İletişim Sayfası
                 </a>
               </GlareHover>
 
