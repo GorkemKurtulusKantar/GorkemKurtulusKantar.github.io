@@ -27,7 +27,6 @@ function App() {
         colors={['#754d45', "#284261", "#55a058"]}
         speedMultiplier={0.22}
         maxAge={250}
-
         enableShaderEffect={true}
       />
 
@@ -35,7 +34,7 @@ function App() {
       <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 mt-16">
         <Reveal>
           <div ref={heroContainerRef} className="text-center max-w-4xl mx-auto" style={{ position: 'relative' }}>
-
+        
           </div>
         </Reveal>
       </section>
@@ -86,7 +85,7 @@ function App() {
       </section> */}
 
       {/* Contact Section */}
-      <section id="contact" className="relative z-10 min-h-screen flex justify-between items-end px-4 py-2 ">
+      <section id="contact" className="relative z-10 min-h-[70vh] flex justify-between items-end px-4 py-2 ">
           <Footer />
       </section>
 

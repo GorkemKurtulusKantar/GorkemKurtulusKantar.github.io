@@ -55,6 +55,9 @@ const VariableProximity = forwardRef((props, ref) => {
     onClick,
     style,
     disabled,
+    href,
+    target,
+    rel,
     ...restProps
   } = props;
 
@@ -150,10 +153,16 @@ const VariableProximity = forwardRef((props, ref) => {
   const words = label.split(" ");
   let letterIndex = 0;
 
+  const WrapperTag = href ? 'a' : 'span';
+  const computedRel = target === '_blank' && !rel ? 'noopener noreferrer' : rel;
+
   return (
-    <span
+    <WrapperTag
       ref={ref}
       onClick={onClick}
+      href={href}
+      target={target}
+      rel={computedRel}
       style={{
         display: "inline",
         fontFamily: '"Roboto Flex", sans-serif',
@@ -190,7 +199,7 @@ const VariableProximity = forwardRef((props, ref) => {
         </span>
       ))}
       <span className="sr-only">{label}</span>
-    </span>
+    </WrapperTag>
   );
 });
 
