@@ -26,7 +26,7 @@ function App() {
         baseThickness={5}
         colors={['#754d45', "#284261", "#55a058"]}
         speedMultiplier={0.22}
-        maxAge={500}
+        maxAge={250}
 
         enableShaderEffect={true}
       />
