@@ -27,24 +27,11 @@ const Navbar = () => {
                 playOnce={false}
               >
                 <a href="#about" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Hakkımızda
+                  About
                 </a>
               </GlareHover>
 
-              {/* Hizmetler */}
-              <GlareHover
-                glareColor="#ffffff"
-                glareOpacity={0.9}
-                glareAngle={-45}
-                glareSize={200}
-                transitionDuration={900}
-                playOnce={false}
-              >
-                <a href="#projects" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Projeler
-                </a>
-              </GlareHover>
-
+              
               {/* Projeler */}
               <GlareHover
                 glareColor="#ffffff"
@@ -55,7 +42,7 @@ const Navbar = () => {
                 playOnce={false}
               >
                 <a href="#projects" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
-                  Deneyimler
+                  Project
                 </a>
               </GlareHover>
 
@@ -69,7 +56,7 @@ const Navbar = () => {
                 playOnce={false}
               >
                 <a href="#contact" className=" text-2xl font-semibold text-[#b5b5b5a4]  transition-colors">
-                  İletişim Sayfası
+                  Contact
                 </a>
               </GlareHover>
 

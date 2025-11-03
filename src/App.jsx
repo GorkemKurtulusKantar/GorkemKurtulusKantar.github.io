@@ -9,7 +9,6 @@ import Reveal from './components/Reveal'
 import Ribbons from './components/Ribbons'
 import VariableProximity from './components/VariableProximity'
 import Experience from './components/Experience'
-import ContactMe from './components/ContactMe'
 import About from './components/About'
 import Footer from './components/Footer'
 import './index.css'
@@ -26,7 +25,7 @@ function App() {
       <Ribbons
         baseThickness={5}
         colors={['#754d45', "#284261", "#55a058"]}
-        speedMultiplier={0.44}
+        speedMultiplier={0.22}
         maxAge={500}
 
         enableShaderEffect={true}
@@ -43,17 +42,13 @@ function App() {
 
       {/* About Section */}
       <section id="about" className="relative z-10 min-h-screen flex items-center justify-start px-12 py-16">
-        <Reveal>
+        <Reveal className='flex flex-col lg:flex-row w-full items-center justify-between'>
           <About servicesContainerRef={servicesContainerRef} />
-        </Reveal>
-      </section>
-
-
-      <section id="experience" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16">
-        <Reveal>
           <Experience />
         </Reveal>
       </section>
+
+
 
 
 
@@ -83,22 +78,18 @@ function App() {
 
 
 
-      {/* Curve Editor Section */}
+      {/* Curve Editor Section
       <section id="curve-editor" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16">
         <Reveal>
           <CurveDemo />
         </Reveal>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
-      <section id="contact" className="relative z-10 min-h-screen flex items-center justify-center px-4 py-16">
-        <Reveal>
-          <ContactMe />
-        </Reveal>
+      <section id="contact" className="relative z-10 min-h-screen flex justify-between items-end px-4 py-2 ">
+          <Footer />
       </section>
 
-      {/* Footer */}
-      <Footer />
     </div>
   )
 }

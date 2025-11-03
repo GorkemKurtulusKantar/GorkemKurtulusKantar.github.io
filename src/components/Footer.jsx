@@ -1,134 +1,101 @@
 import React from 'react';
+import GlareHover from './GlareHover';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 bg-[#FDF7F4] min-h-screen flex flex-col px-8 md:px-16 py-16">
-      <div className="flex-1 flex flex-col md:flex-row justify-between">
-        {/* Left Column */}
-        <div className="flex flex-col justify-between mb-12 md:mb-0">
-          {/* Main Title */}
-          <div className="mb-12 md:mb-0">
-            <h1 className="font-montserrat font-bold text-5xl md:text-6xl lg:text-7xl text-[#6A6AFF] uppercase tracking-tight">
-              Görkem Kantar
-            </h1>
-          </div>
+    <footer className="relative z-10   flex flex-col w-full pb-2  ">
+      {/* Row 1: Name left, Availability right */}
+      <div className="flex justify-between items-end w-full">
 
-          {/* Work Schedule */}
-          <div className="mb-12 md:mb-8">
-            <div className="mb-4">
-              <h3 className="font-inter font-bold text-sm uppercase text-black mb-1">
-                Work Days
-              </h3>
-              <p className="font-inter text-sm uppercase text-black">
-                Tuesday-Friday
-              </p>
-            </div>
-            <div>
-              <h3 className="font-inter font-bold text-sm uppercase text-black mb-1">
-                Teaching
-              </h3>
-              <p className="font-inter text-sm uppercase text-black">
-                Monday
-              </p>
-            </div>
-          </div>
 
+      </div>
+
+      {/* Row 2: Left details + socials, Right contact + copyright */}
+      <div className="mt-12 flex justify-between items-end w-full">
+        {/* Left group */}
+        <div className="flex flex-col">
           {/* Social Links */}
-          <div className="md:mb-0">
-            <p className="font-inter text-sm uppercase text-black">
-              <span className="text-black">Socials </span>
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
+          <div className="md:mb-0 flex ">
+            <p className="  uppercase text-black flex flex-row gap-4">
+              <span className="text-black font-bold">Socials </span>
+
+
+              <GlareHover
+                glareColor="#ffffff"
+                glareOpacity={0.9}
+                glareAngle={-45}
+                glareSize={200}
+                transitionDuration={900}
+                playOnce={false}
               >
-                Github
-              </a>
+                <a 
+                  href="https://www.linkedin.com/in/g%C3%B6rkem-kurtulu%C5%9F/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                className=" text-primary underline hover:text-primary transition-colors">
+                  LinkedIn
+                </a>
+              </GlareHover>
+              <GlareHover
+                glareColor="#ffffff"
+                glareOpacity={0.9}
+                glareAngle={-45}
+                glareSize={200}
+                transitionDuration={900}
+                playOnce={false}
+              >
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                className=" text-primary underline hover:text-primary transition-colors">
+                  Instagram
+                </a>
+              </GlareHover>
+              <GlareHover
+                glareColor="#ffffff"
+                glareOpacity={0.9}
+                glareAngle={-45}
+                glareSize={200}
+                transitionDuration={900}
+                playOnce={false}
+              >
+                <a 
+                  href="https://github.com/Enissimu" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                className=" text-primary underline hover:text-primary transition-colors">
+                  Github
+                </a>
+              </GlareHover>
+
               {' '}
-              <a 
-                href="https://codepen.io" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
-              >
-                Codepen
-              </a>
-              {' '}
-              <a 
-                href="https://bsky.app" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
-              >
-                Bluesky
-              </a>
-              {' '}
-              <a 
-                href="https://mastodon.social" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
-              >
-                Mastodon
-              </a>
-              {' '}
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
-              >
-                Instagram
-              </a>
-              {' '}
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
-              >
-                LinkedIn
-              </a>
-              {' '}
-              <a 
-                href="/rss" 
-                className="text-[#6A6AFF] underline hover:text-[#4A4AFF] transition-colors"
-              >
-                RSS
-              </a>
+
             </p>
           </div>
         </div>
 
-        {/* Right Column */}
-        <div className="flex flex-col justify-between items-end text-right">
-          {/* Availability */}
-          <div className="mb-12 md:mb-8">
-            <p className="font-inter font-bold text-sm uppercase text-black">
-              Available January 2026
-            </p>
-          </div>
-
+        {/* Right group */}
+        <div className="flex flex-col items-end text-right">
           {/* Contact */}
           <div className="mb-12 md:mb-8">
-            <h3 className="font-inter font-bold text-sm uppercase text-black mb-2">
-              Have a project in mind?
+            <h3 className=" font-bold  uppercase text-black mb-2">
+              Contact Me
             </h3>
             <a 
               href="mailto:info@gorkemkantar.com" 
-              className="font-inter text-sm uppercase text-black hover:text-[#6A6AFF] transition-colors"
+              className="   text-black hover:text-primary transition-colors"
             >
               <span className="text-black">→ </span>
-              <span className="text-[#6A6AFF] underline">info@gorkemkantar.com</span>
+              <span className="text-primary underline ">gorkem.kantar@hotmail.com</span>
             </a>
           </div>
 
           {/* Copyright */}
           <div className="md:mt-auto">
-            <p className="font-inter text-xs uppercase text-black">
+            <p className="  uppercase text-black">
               © {currentYear} Görkem Kantar
             </p>
           </div>
