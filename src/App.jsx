@@ -1,7 +1,7 @@
 
 
 import { useRef } from 'react'
-import Background from './components/Background'
+import { FiberContainer } from './components/canvas/FiberContainer'
 import CurveDemo from './components/CurveDemo'
 import { ExpandableCardDemo } from './components/ExpandableCardDemo'
 import Navbar from './components/Navbar'
@@ -19,7 +19,9 @@ function App() {
 
   return (
     <div className="relative overflow-hidden ">
-      <Background />
+      <div style={{ position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none' }}>
+        <FiberContainer />
+      </div>
 
       <Navbar />
       <Ribbons
