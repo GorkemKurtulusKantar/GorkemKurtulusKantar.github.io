@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Model } from "./Trees";
-import SmokeBurst from "./SmokeBurst";
 import { Color } from "three";
 
 export function Scene() {
@@ -199,8 +198,6 @@ export function Scene() {
                 new Color("#F5F5F5").convertLinearToSRGB(),
               ]}
             />
-            {/* Smoke burst for houses */}
-            <SmokeBurst origin={[-1.5, 0.6, 0]} trigger={showHouses} />
           </>
         )}
 
@@ -240,8 +237,6 @@ export function Scene() {
                 new Color("#5D4037").convertLinearToSRGB(),
               ]}
             />
-            {/* Smoke burst for trees (centered between them, slightly above) */}
-            <SmokeBurst origin={[0, -1.0, 0]} trigger={showTrees} />
           </>
         )}
 
@@ -264,8 +259,7 @@ export function Scene() {
                 new Color("#7A3B2E").convertLinearToSRGB(),
               ]}
             />
-            {/* Smoke burst for base */}
-            <SmokeBurst origin={[0, 0.6, 0]} trigger={showBase} />
+
           </>
         )}
 
