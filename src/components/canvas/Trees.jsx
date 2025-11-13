@@ -3,28 +3,45 @@ import { useGLTF } from "@react-three/drei";
 import { Vector3 } from "three";
 import { GhibliShader } from "./GhibliShader";
 
-export const Trees = forwardRef((props, ref) => {
-  const { nodes } = useGLTF("/trees.glb");
+export const Model = forwardRef((props, ref) => {
+  const {
+    modelUrl = "/Trees.glb",
+    meshName,
+    colors,
+    thresholds = [0.6, 0.35, 0.001],
+    ...rest
+  } = props;
+
+  const { nodes } = useGLTF(modelUrl);
 
   const uniforms = useMemo(
     () => ({
       colorMap: {
-        value: props.colors,
+        value: colors,
       },
       brightnessThresholds: {
-        value: [0.6, 0.35, 0.001],
+        value: thresholds,
       },
       lightPosition: { value: new Vector3(15, 15, 15) },
     }),
-    [props.colors]
+    [colors, thresholds]
   );
 
+  console.log(nodes);
+  const targetMesh = useMemo(() => {
+    if (!nodes) return undefined;
+    if (meshName && nodes[meshName] && nodes[meshName].geometry) {
+      return nodes[meshName];
+    }
+    return undefined;
+  }, [nodes, meshName]);
+
   return (
-    <group {...props} ref={ref} dispose={null}>
+    <group {...rest} ref={ref} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Foliage?.geometry || undefined}
+        geometry={targetMesh?.geometry || undefined}
         position={[0.33, -0.05, -0.68]}
       >
         <shaderMaterial
@@ -37,6 +54,7 @@ export const Trees = forwardRef((props, ref) => {
   );
 });
 
-useGLTF.preload("/trees.glb");
+Model.preload = (url) => useGLTF.preload(url);
+
 
 
