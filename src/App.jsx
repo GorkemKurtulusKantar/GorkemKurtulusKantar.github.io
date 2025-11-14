@@ -1,6 +1,6 @@
 
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { FiberContainer } from './components/canvas/FiberContainer'
 import CurveDemo from './components/CurveDemo'
 import { ExpandableCardDemo } from './components/ExpandableCardDemo'
@@ -16,6 +16,17 @@ import './index.css'
 function App() {
   const heroContainerRef = useRef(null);
   const servicesContainerRef = useRef(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY || 0;
+      setShowScrollHint(y < 80);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="relative overflow-hidden ">
@@ -33,10 +44,15 @@ function App() {
       />
 
       {/* Hero Section */}
-      <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 mt-16">
-        <Reveal>
-          <div ref={heroContainerRef} className="text-center max-w-4xl mx-auto" style={{ position: 'relative' }}>
-        
+      <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-end px-4 pb-18">
+        <Reveal >
+          <div ref={heroContainerRef} className="max-w-4xl mx-auto" >
+            <div
+              id="section05"
+              className={`transition-opacity duration-700 ${showScrollHint ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            >
+              <a href="#about" className='text-4xl'><span></span>Scroll</a>
+            </div>
           </div>
         </Reveal>
       </section>

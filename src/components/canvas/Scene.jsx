@@ -1,10 +1,11 @@
 import { useRef, useState, useEffect, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Model } from "./Model";
-import { Color } from "three";
+import { Color, MathUtils } from "three";
 import { SmokeBlobs } from "./SmokeBlobs";
 
 export function Scene() {
+  const rootRef = useRef(null);
   const refHouses = useRef(null);
   const refTreeA = useRef(null);
   const refTreeB = useRef(null);
@@ -19,6 +20,8 @@ export function Scene() {
     houses: false,
     trees: false,
   });
+
+  const mouseTargetRef = useRef({ x: 0, y: 0 });
 
   // reveal animation bookkeeping
   const revealStartRef = useRef({
@@ -42,8 +45,36 @@ export function Scene() {
     base: 0.9,
   });
 
+  // track mouse globally so background can react even though canvas is behind HTML
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = (e.clientY / window.innerHeight) * 2 - 1;
+      mouseTargetRef.current = { x, y };
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   useFrame(() => {
     const isRevealed = (key) => revealStartRef.current[key] === null;
+
+    // smooth overall scene rotation based on mouse position
+    if (rootRef.current) {
+      const targetRotY = mouseTargetRef.current.x * 0.4;
+      const targetRotX = -mouseTargetRef.current.y * 0.2;
+      rootRef.current.rotation.y = MathUtils.lerp(
+        rootRef.current.rotation.y,
+        targetRotY,
+        0.04
+      );
+      rootRef.current.rotation.x = MathUtils.lerp(
+        rootRef.current.rotation.x,
+        targetRotX,
+        0.04
+      );
+    }
 
     if (refHouses.current && isRevealed("houses")) {
       refHouses.current.rotation.y += 0.003;
@@ -219,109 +250,117 @@ export function Scene() {
       />
 
       <Suspense fallback={null}>
-        {showHouses && (
-          <>
-            <Model
-              ref={refHouses}
-              modelUrl="/Houses.glb"
-              meshName="Houses"
-              position={[-1.5, 1.2, 0]}
-              scale={0.04}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (refHouses.current) refHouses.current.rotation.y += 0.25;
-              }}
-              colors={[
-                new Color("#C1440E").convertLinearToSRGB(),
-                new Color("#7A2E1E").convertLinearToSRGB(),
-                new Color("#FFFFFF").convertLinearToSRGB(),
-                new Color("#F5F5F5").convertLinearToSRGB(),
-              ]}
-            />
-            {smoke.houses && <SmokeBlobs origin={[-1.5, 1.2, 0]} duration={2.5} />}
-          </>
-        )}
+        <group ref={rootRef}>
+          {showHouses && (
+            <>
+              <Model
+                ref={refHouses}
+                modelUrl="/Houses.glb"
+                meshName="Houses"
+                position={[-1.5, 1.2, 0]}
+                scale={0.04}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (refHouses.current) refHouses.current.rotation.y += 0.25;
+                }}
+                colors={[
+                  new Color("#C1440E").convertLinearToSRGB(),
+                  new Color("#7A2E1E").convertLinearToSRGB(),
+                  new Color("#FFFFFF").convertLinearToSRGB(),
+                  new Color("#F5F5F5").convertLinearToSRGB(),
+                ]}
+              />
+              {smoke.houses && (
+                <SmokeBlobs origin={[-1.5, 1.2, 0]} duration={2.5} />
+              )}
+            </>
+          )}
 
-        {showTrees && (
-          <>
-            <Model
-              ref={refTreeA}
-              modelUrl="/Trees.glb"
-              meshName="Sphere063_1"
-              position={[0, -1.5, 0]}
-              scale={0.087}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (refTreeA.current) refTreeA.current.rotation.y += 0.25;
-              }}
-              colors={[
-                new Color("#427062").convertLinearToSRGB(),
-                new Color("#33594E").convertLinearToSRGB(),
-                new Color("#234549").convertLinearToSRGB(),
-                new Color("#1E363F").convertLinearToSRGB(),
-              ]}
-            />
-            <Model
-              ref={refTreeB}
-              modelUrl="/Trees.glb"
-              meshName="Sphere063"
-              position={[0, -1.5, 0]}
-              scale={0.087}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (refTreeB.current) refTreeB.current.rotation.y += 0.25;
-              }}
-              colors={[
-                new Color("#D2B48C").convertLinearToSRGB(),
-                new Color("#A0522D").convertLinearToSRGB(),
-                new Color("#8B4513").convertLinearToSRGB(),
-                new Color("#5D4037").convertLinearToSRGB(),
-              ]}
-            />
-            {smoke.trees && <SmokeBlobs origin={[0, -1.5, 0]} duration={2.5} />}
-          </>
-        )}
+          {showTrees && (
+            <>
+              <Model
+                ref={refTreeA}
+                modelUrl="/Trees.glb"
+                meshName="Sphere063_1"
+                position={[0, -1.5, 0]}
+                scale={0.087}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (refTreeA.current) refTreeA.current.rotation.y += 0.25;
+                }}
+                colors={[
+                  new Color("#427062").convertLinearToSRGB(),
+                  new Color("#33594E").convertLinearToSRGB(),
+                  new Color("#234549").convertLinearToSRGB(),
+                  new Color("#1E363F").convertLinearToSRGB(),
+                ]}
+              />
+              <Model
+                ref={refTreeB}
+                modelUrl="/Trees.glb"
+                meshName="Sphere063"
+                position={[0, -1.5, 0]}
+                scale={0.087}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (refTreeB.current) refTreeB.current.rotation.y += 0.25;
+                }}
+                colors={[
+                  new Color("#D2B48C").convertLinearToSRGB(),
+                  new Color("#A0522D").convertLinearToSRGB(),
+                  new Color("#8B4513").convertLinearToSRGB(),
+                  new Color("#5D4037").convertLinearToSRGB(),
+                ]}
+              />
+              {smoke.trees && (
+                <SmokeBlobs origin={[0, -1.5, 0]} duration={2.5} />
+              )}
+            </>
+          )}
 
-        {showBase && (
-          <>
-            <Model
-              ref={refBase}
-              modelUrl="/Base.glb"
-              meshName="Base"
-              position={[0, 1.2, 0]}
-              scale={0.05}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (refBase.current) refBase.current.rotation.y += 0.25;
-              }}
-              colors={[
-                new Color("#E8C2A0").convertLinearToSRGB(),
-                new Color("#D3936B").convertLinearToSRGB(),
-                new Color("#B86A4B").convertLinearToSRGB(),
-                new Color("#7A3B2E").convertLinearToSRGB(),
-              ]}
-            />
-            {smoke.base && <SmokeBlobs origin={[0, 1.2, 0]} duration={2.5} />}
-          </>
-        )}
+          {showBase && (
+            <>
+              <Model
+                ref={refBase}
+                modelUrl="/Base.glb"
+                meshName="Base"
+                position={[0, 1.2, 0]}
+                scale={0.05}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (refBase.current) refBase.current.rotation.y += 0.25;
+                }}
+                colors={[
+                  new Color("#E8C2A0").convertLinearToSRGB(),
+                  new Color("#D3936B").convertLinearToSRGB(),
+                  new Color("#B86A4B").convertLinearToSRGB(),
+                  new Color("#7A3B2E").convertLinearToSRGB(),
+                ]}
+              />
+              {smoke.base && (
+                <SmokeBlobs origin={[0, 1.2, 0]} duration={2.5} />
+              )}
+            </>
+          )}
 
-        <Model
-          ref={refDirt}
-          modelUrl="/Dirt.glb"
-          meshName="Dirt"
-          position={[0, -3.2, 0]}
-          scale={0.05}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (refDirt.current) refDirt.current.rotation.y += 0.25;
-          }}
-          colors={[
-            new Color("#C49A6C").convertLinearToSRGB(),
-            new Color("#A47148").convertLinearToSRGB(),
-            new Color("#8B5A2B").convertLinearToSRGB(),
-            new Color("#5D4037").convertLinearToSRGB(),
-          ]}
-        />
+          <Model
+            ref={refDirt}
+            modelUrl="/Dirt.glb"
+            meshName="Dirt"
+            position={[0, -3.2, 0]}
+            scale={0.05}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (refDirt.current) refDirt.current.rotation.y += 0.25;
+            }}
+            colors={[
+              new Color("#C49A6C").convertLinearToSRGB(),
+              new Color("#A47148").convertLinearToSRGB(),
+              new Color("#8B5A2B").convertLinearToSRGB(),
+              new Color("#5D4037").convertLinearToSRGB(),
+            ]}
+          />
+        </group>
       </Suspense>
     </>
   );
