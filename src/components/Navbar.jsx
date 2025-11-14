@@ -55,7 +55,7 @@ const Navbar = () => {
           {/* Logo/Brand */}
           <div className="flex items-center ">
           <VariableProximity
-              label="ŞİRORORO"
+              label="Görkem Kantar"
               fromFontVariationSettings="'wght' 700, 'opsz' 14"
               toFontVariationSettings="'wght' 950, 'opsz' 60"
               containerRef={servicesContainerRef}

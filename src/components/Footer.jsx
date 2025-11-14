@@ -85,12 +85,17 @@ const Footer = () => {
               Contact Me
             </h3>
             <a 
-              href="mailto:info@gorkemkantar.com" 
+              href="mailto:gorkem.kantar@hotmail.com" 
               className="   text-black hover:text-primary transition-colors"
             >
               <span className="text-black">→ </span>
               <span className="text-primary underline ">gorkem.kantar@hotmail.com</span>
             </a>
+            <div className="mt-2 text-sm text-black">
+              <a href="tel:+905399484274" className="hover:text-primary transition-colors">
+                +90 539 948 42 74
+              </a>
+            </div>
           </div>
 
           {/* Copyright */}

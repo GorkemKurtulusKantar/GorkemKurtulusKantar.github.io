@@ -195,78 +195,67 @@ style={{position: 'relative'}} >
 }
 
 
-// Project data
+// Project data (from https://github.com/Enissimu?tab=repositories)
 const cards = [
   {
-    title: "Realtime Chat App",
-    description: "WebSocket chat with rooms, typing indicators and persistence.",
-    src: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Live",
-    ctaLink: "https://example.com/chat",
-    githubLink: "https://github.com/yourname/realtime-chat",
-    technologies: ["React", "Vite", "Socket.io", "Express", "Redis"],
-    content: () => (
-      <p>
-        Full‑stack realtime messenger with public/private rooms, presence and message history.
-        Optimistic UI and rate‑limited server endpoints.
-      </p>
-    ),
-  },
-  {
-    title: "3D Product Viewer",
-    description: "Configurable 3D viewer using Three.js and GLTF.",
-    src: "https://images.unsplash.com/photo-1549921296-3b4a4f7f5f32?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Demo",
-    ctaLink: "https://example.com/3d-viewer",
-    githubLink: "https://github.com/yourname/3d-product-viewer",
-    technologies: ["React", "Three.js", "GLTF", "Tailwind"],
-    content: () => (
-      <p>
-        Variant switching, dynamic materials and orbit controls, tuned with lazy loading
-        and GPU instancing for smooth performance.
-      </p>
-    ),
-  },
-  {
-    title: "Analytics Dashboard",
-    description: "Aggregated metrics with charts and role‑based access.",
-    src: "https://images.unsplash.com/photo-1551281044-8af2b9b66037?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "View",
-    ctaLink: "https://example.com/analytics",
-    githubLink: "https://github.com/yourname/analytics-dashboard",
-    technologies: ["React", "PostgreSQL", "Prisma", "zod"],
-    content: () => (
-      <p>
-        Multi‑tenant analytics with daily rollups, filters and CSV export. Charts are
-        virtualized for large datasets.
-      </p>
-    ),
-  },
-  {
-    title: "E‑commerce API",
-    description: "Modular REST API with payments and webhooks.",
-    src: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Docs",
-    ctaLink: "https://example.com/shop-api",
-    githubLink: "https://github.com/yourname/ecommerce-api",
-    technologies: ["Node.js", "Express", "Stripe", "JWT", "Jest"],
-    content: () => (
-      <p>
-        Products, carts, checkout and Stripe payments. Signed webhooks and idempotent operations.
-      </p>
-    ),
-  },
-  {
-    title: "Portfolio v2",
-    description: "This site: motion effects, ribbons and 3D background.",
-    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop&q=60",
+    title: "Fullstack Blog",
+    description:
+      "Fullstack blog app with React, Express and MongoDB, deployed with CI/CD.",
+    src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&auto=format&fit=crop&q=60",
     ctaText: "Source",
-    ctaLink: "https://github.com/yourname/portfolio-v2",
-    githubLink: "https://github.com/yourname/portfolio-v2",
-    technologies: ["React", "Framer Motion", "OGL", "Three.js", "Tailwind"],
+    ctaLink: "https://github.com/Enissimu/Fullstack-Blog",
+    githubLink: "https://github.com/Enissimu/Fullstack-Blog",
+    technologies: ["React", "Express", "MongoDB", "React Query", "CI/CD"],
     content: () => (
       <p>
-        Custom ribbon shader, font‑variation proximity, and a GLTF planet path animation using rAF.
+        Blog platform built with the MERN stack, featuring React Query, routing,
+        and automated deployment pipeline.
+      </p>
+    ),
+  },
+  {
+    title: "Patients Typescript",
+    description: "Full‑stack TypeScript application for managing patient data.",
+    src: "https://images.unsplash.com/photo-1535916707207-35f97e715e1b?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Source",
+    ctaLink: "https://github.com/Enissimu/Patients-Typescript",
+    githubLink: "https://github.com/Enissimu/Patients-Typescript",
+    technologies: ["TypeScript", "Node.js", "React"],
+    content: () => (
+      <p>
+        End‑to‑end TypeScript project covering backend and frontend, focused on
+        typed APIs and patient records.
+      </p>
+    ),
+  },
+  {
+    title: "Twitter Word Blocker",
+    description:
+      "Chrome extension that blocks Twitter accounts containing words you choose.",
+    src: "https://images.unsplash.com/photo-1517260911058-0fcfd733702f?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Source",
+    ctaLink: "https://github.com/Enissimu/TwitterWordBlocker",
+    githubLink: "https://github.com/Enissimu/TwitterWordBlocker",
+    technologies: ["JavaScript", "Chrome Extension"],
+    content: () => (
+      <p>
+        Browser extension to curate your Twitter timeline by automatically
+        blocking accounts whose bios or names contain unwanted words.
+      </p>
+    ),
+  },
+  {
+    title: "Native Repo App",
+    description: "React Native app for browsing GitHub repositories.",
+    src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&q=60",
+    ctaText: "Source",
+    ctaLink: "https://github.com/Enissimu/Native-Repo-App",
+    githubLink: "https://github.com/Enissimu/Native-Repo-App",
+    technologies: ["React Native", "Expo", "GitHub API"],
+    content: () => (
+      <p>
+        Mobile client built with React Native and Expo to explore GitHub
+        repositories, experiment with list views and API integration.
       </p>
     ),
   },

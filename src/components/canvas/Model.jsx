@@ -27,7 +27,6 @@ export const Model = forwardRef((props, ref) => {
     [colors, thresholds]
   );
 
-  console.log(nodes);
   const targetMesh = useMemo(() => {
     if (!nodes) return undefined;
     if (meshName && nodes[meshName] && nodes[meshName].geometry) {

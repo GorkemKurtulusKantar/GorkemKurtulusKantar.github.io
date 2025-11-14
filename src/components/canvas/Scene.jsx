@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Model } from "./Trees";
+import { Model } from "./Model";
 import { Color } from "three";
+import { SmokeBlobs } from "./SmokeBlobs";
 
 export function Scene() {
   const refHouses = useRef(null);
@@ -13,6 +14,11 @@ export function Scene() {
   const [showBase, setShowBase] = useState(false);
   const [showHouses, setShowHouses] = useState(false);
   const [showTrees, setShowTrees] = useState(false);
+  const [smoke, setSmoke] = useState({
+    base: false,
+    houses: false,
+    trees: false,
+  });
 
   // reveal animation bookkeeping
   const revealStartRef = useRef({
@@ -37,16 +43,18 @@ export function Scene() {
   });
 
   useFrame(() => {
-    if (refHouses.current) {
+    const isRevealed = (key) => revealStartRef.current[key] === null;
+
+    if (refHouses.current && isRevealed("houses")) {
       refHouses.current.rotation.y += 0.003;
     }
-    if (refTreeA.current) {
+    if (refTreeA.current && isRevealed("treeA")) {
       refTreeA.current.rotation.y += 0.0025;
     }
-    if (refTreeB.current) {
+    if (refTreeB.current && isRevealed("treeB")) {
       refTreeB.current.rotation.y += 0.002;
     }
-    if (refBase.current) {
+    if (refBase.current && isRevealed("base")) {
       refBase.current.rotation.y += 0.0015;
     }
     if (refDirt.current) {
@@ -167,15 +175,47 @@ export function Scene() {
     }
   }, [showBase]);
 
+  // trigger short smoke bursts when models first appear
+  useEffect(() => {
+    if (!showHouses) return;
+    setSmoke((prev) => ({ ...prev, houses: true }));
+    const timeout = setTimeout(
+      () => setSmoke((prev) => ({ ...prev, houses: false })),
+      2500
+    );
+    return () => clearTimeout(timeout);
+  }, [showHouses]);
+
+  useEffect(() => {
+    if (!showTrees) return;
+    setSmoke((prev) => ({ ...prev, trees: true }));
+    const timeout = setTimeout(
+      () => setSmoke((prev) => ({ ...prev, trees: false })),
+      2500
+    );
+    return () => clearTimeout(timeout);
+  }, [showTrees]);
+
+  useEffect(() => {
+    if (!showBase) return;
+    setSmoke((prev) => ({ ...prev, base: true }));
+    const timeout = setTimeout(
+      () => setSmoke((prev) => ({ ...prev, base: false })),
+      2500
+    );
+    return () => clearTimeout(timeout);
+  }, [showBase]);
+
   return (
     <>
-      <ambientLight intensity={0.1} />
+      <fog attach="fog" args={["#000000", 4, 12]} />
+      <ambientLight intensity={1.2} />
       <directionalLight
-        color="white"
+        color="red"
         position={[15, 15, 15]}
         castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
+        shadow-mapSize-width={4096}
+        shadow-mapSize-height={4096}
       />
 
       <Suspense fallback={null}>
@@ -185,7 +225,7 @@ export function Scene() {
               ref={refHouses}
               modelUrl="/Houses.glb"
               meshName="Houses"
-              position={[-1.5, 0, 0]}
+              position={[-1.5, 1.2, 0]}
               scale={0.04}
               onClick={(e) => {
                 e.stopPropagation();
@@ -198,6 +238,7 @@ export function Scene() {
                 new Color("#F5F5F5").convertLinearToSRGB(),
               ]}
             />
+            {smoke.houses && <SmokeBlobs origin={[-1.5, 1.2, 0]} duration={2.5} />}
           </>
         )}
 
@@ -207,7 +248,7 @@ export function Scene() {
               ref={refTreeA}
               modelUrl="/Trees.glb"
               meshName="Sphere063_1"
-              position={[0, -2, 0]}
+              position={[0, -1.5, 0]}
               scale={0.087}
               onClick={(e) => {
                 e.stopPropagation();
@@ -224,7 +265,7 @@ export function Scene() {
               ref={refTreeB}
               modelUrl="/Trees.glb"
               meshName="Sphere063"
-              position={[0, -2, 0]}
+              position={[0, -1.5, 0]}
               scale={0.087}
               onClick={(e) => {
                 e.stopPropagation();
@@ -237,6 +278,7 @@ export function Scene() {
                 new Color("#5D4037").convertLinearToSRGB(),
               ]}
             />
+            {smoke.trees && <SmokeBlobs origin={[0, -1.5, 0]} duration={2.5} />}
           </>
         )}
 
@@ -246,7 +288,7 @@ export function Scene() {
               ref={refBase}
               modelUrl="/Base.glb"
               meshName="Base"
-              position={[0, 0, 0]}
+              position={[0, 1.2, 0]}
               scale={0.05}
               onClick={(e) => {
                 e.stopPropagation();
@@ -259,7 +301,7 @@ export function Scene() {
                 new Color("#7A3B2E").convertLinearToSRGB(),
               ]}
             />
-
+            {smoke.base && <SmokeBlobs origin={[0, 1.2, 0]} duration={2.5} />}
           </>
         )}
 
@@ -267,7 +309,7 @@ export function Scene() {
           ref={refDirt}
           modelUrl="/Dirt.glb"
           meshName="Dirt"
-          position={[0, -5, 0]}
+          position={[0, -3.2, 0]}
           scale={0.05}
           onClick={(e) => {
             e.stopPropagation();

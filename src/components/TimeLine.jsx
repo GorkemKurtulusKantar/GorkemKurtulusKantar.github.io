@@ -3,23 +3,25 @@ import { COLORS } from '../constants/colors';
 const TimeLine = () => {
   const timelineItems = [
     {
-      date: '12/02/2025',
-      title: 'Kickoff',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis tempora ipsum adipisci tenetur sunt quae exercitationem sed pariatur porro!',
-      color: COLORS.ribbonColors[0] // Red
+      date: '2023 – Present',
+      title: 'Software Developer – Ustunova',
+      description:
+        'Working as a software developer at Ustunova, building web applications and services using modern JavaScript/TypeScript and backend technologies.',
+      color: COLORS.ribbonColors[2] // Blue
     },
+    
     {
-      date: '15/03/2025', 
-      title: 'First Milestone',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis tempora ipsum adipisci tenetur sunt quae exercitationem sed pariatur porro!',
+      date: '2020 – 2025',
+      title: 'Ankara University – Computer Engineering',
+
       color: COLORS.ribbonColors[1] // Teal
     },
     {
-      date: '24/04/2025',
-      title: 'Launch', 
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis tempora ipsum adipisci tenetur sunt quae exercitationem sed pariatur porro!',
-      color: COLORS.ribbonColors[2] // Blue
+      date: '2015 – 2019',
+      title: 'Ankara Atatürk Lisesi, Ankara',
+      color: COLORS.ribbonColors[0] // Red
     }
+   
   ];
 
   return (
