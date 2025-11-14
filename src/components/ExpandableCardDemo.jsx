@@ -71,7 +71,8 @@ export function ExpandableCardDemo() {
               aria-modal="true"
               aria-labelledby={dialogLabelId}
               aria-describedby={dialogDescId}
-              className="flex h-full w-full  flex-col overflow-hidden bg-white/20 dark:bg-neutral-900/30 backdrop-blur-md border border-white/20 dark:border-white/10   rounded-3xl shadow-2xl"            >
+              className="flex h-full w-full flex-col overflow-hidden bg-neutral-900 rounded-3xl shadow-2xl"
+            >
  
 
               <div className="flex-1 overflow-hidden">
@@ -80,16 +81,16 @@ export function ExpandableCardDemo() {
                     <motion.h3
                       id={dialogLabelId}
                       layoutId={`title-${active.title}-${id}`}
-                      className="text-2xl font-bold text-neutral-800 text-neutral-100 mb-2 "
+                      className="text-2xl font-bold text-neutral-50 mb-2"
                     >
-                      <span className="text-sm text-neutral-500 text-neutral-400">
+                      <span className="text-sm text-neutral-400">
                         {active.title}
                       </span>
                     </motion.h3>
                     <motion.p
                       id={dialogDescId}
                       layoutId={`description-${active.description}-${id}`}
-                      className="text-neutral-600 dark:text-neutral-400 mb-4"
+                      className="text-sm text-neutral-300 mb-4"
                     >
                       {active.description}
                     </motion.p>
@@ -132,7 +133,7 @@ export function ExpandableCardDemo() {
                     {active.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-full"
+                        className="px-3 py-1 text-xs font-medium   bg-gray-700 text-gray-200 rounded-full"
                       >
                         {tech}
                       </span>
@@ -146,7 +147,7 @@ export function ExpandableCardDemo() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed
+                    className="text-sm text-neutral-300 leading-relaxed
                                [mask:linear-gradient(to_bottom,white_80%,transparent)]
                                [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >

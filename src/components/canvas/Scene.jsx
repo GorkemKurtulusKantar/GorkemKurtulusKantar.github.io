@@ -242,7 +242,7 @@ export function Scene() {
       <fog attach="fog" args={["#000000", 4, 12]} />
       <ambientLight intensity={1.2} />
       <directionalLight
-        color="red"
+        color="white"
         position={[15, 15, 15]}
         castShadow
         shadow-mapSize-width={4096}
