@@ -1,9 +1,9 @@
-import React from 'react';
-import GlareHover from './GlareHover';
+import React, { useRef } from 'react';
+import VariableProximity from './VariableProximity';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
 
+  const containerRef = useRef(null);
   return (
     <footer className="relative z-10   flex flex-col w-full pb-2  ">
       {/* Row 1: Name left, Availability right */}
@@ -12,67 +12,48 @@ const Footer = () => {
 
       </div>
 
-      {/* Row 2: Left details + socials, Right contact + copyright */}
       <div className="mt-12 flex justify-between items-end w-full">
         {/* Left group */}
         <div className="flex flex-col">
           {/* Social Links */}
+          <div ref={containerRef} >
+
+            <VariableProximity
+              label="G2K"
+              fromFontVariationSettings="'wght' 1000, 'opsz' 72"
+              toFontVariationSettings="'wght' 2000, 'opsz' 128"
+              containerRef={containerRef}
+              radius={30}
+              falloff="gaussian"
+              className="text-7xl md:text-8xl font-extrabold text-white mb-4  inline-block align-top leading-tight"
+            />
+          </div>
+
+
           <div className="md:mb-0 flex ">
-            <p className="uppercase text-black flex flex-row gap-6 text-lg md:text-2xl">
-              <span className="text-black font-extrabold">Socials</span>
-
-
-              <GlareHover
-                glareColor="#ffffff"
-                glareOpacity={0.9}
-                glareAngle={-45}
-                glareSize={200}
-                transitionDuration={900}
-                playOnce={false}
-              >
-                <a 
-                  href="https://www.linkedin.com/in/g%C3%B6rkem-kurtulu%C5%9F/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary underline hover:text-primary transition-colors font-semibold">
-                  LinkedIn
-                </a>
-              </GlareHover>
-              <GlareHover
-                glareColor="#ffffff"
-                glareOpacity={0.9}
-                glareAngle={-45}
-                glareSize={200}
-                transitionDuration={900}
-                playOnce={false}
-              >
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary underline hover:text-primary transition-colors font-semibold">
-                  Instagram
-                </a>
-              </GlareHover>
-              <GlareHover
-                glareColor="#ffffff"
-                glareOpacity={0.9}
-                glareAngle={-45}
-                glareSize={200}
-                transitionDuration={900}
-                playOnce={false}
-              >
-                <a 
-                  href="https://github.com/Enissimu" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary underline hover:text-primary transition-colors font-semibold">
-                  Github
-                </a>
-              </GlareHover>
-
-              {' '}
-
+            <p className="uppercase  flex flex-row gap-6 text-lg md:text-2xl">
+              <span className=" font-extrabold">Socials</span>
+              <a 
+                href="https://www.linkedin.com/in/g%C3%B6rkem-kurtulu%C5%9F/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-black transition-colors font-semibold">
+                LinkedIn
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-black transition-colors font-semibold">
+                Instagram
+              </a>
+              <a 
+                href="https://github.com/Enissimu" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-black transition-colors font-semibold">
+                Github
+              </a>
             </p>
           </div>
         </div>
@@ -80,29 +61,17 @@ const Footer = () => {
         {/* Right group */}
         <div className="flex flex-col items-end text-right">
           {/* Contact */}
-          <div className="mb-12 md:mb-8">
-            <h3 className="font-extrabold uppercase text-black mb-3 text-xl md:text-3xl">
+          <div>
+            <h3 className="font-extrabold uppercase  mb-3 text-xl md:text-3xl">
               Contact Me
             </h3>
             <a 
               href="mailto:gorkem.kantar@hotmail.com" 
-              className="text-black hover:text-primary transition-colors text-lg md:text-2xl font-semibold"
+              className=" hover:text-black transition-colors text-lg md:text-2xl font-semibold"
             >
-              <span className="text-black">→ </span>
               <span className="text-primary underline">gorkem.kantar@hotmail.com</span>
             </a>
-            <div className="mt-3 text-base md:text-xl text-black">
-              <a href="tel:+905399484274" className="hover:text-primary transition-colors font-medium">
-                +90 539 948 42 74
-              </a>
-            </div>
-          </div>
 
-          {/* Copyright */}
-          <div className="md:mt-auto">
-            <p className="uppercase text-black text-sm md:text-base tracking-wide">
-              © {currentYear} Görkem Kantar
-            </p>
           </div>
         </div>
       </div>

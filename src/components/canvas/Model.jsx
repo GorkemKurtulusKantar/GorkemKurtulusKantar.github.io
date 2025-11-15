@@ -12,43 +12,30 @@ export const Model = forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const { nodes } = useGLTF(modelUrl);
+  const { nodes, scene } = useGLTF(modelUrl);
+
+  const targetMesh = useMemo(() => {
+    if (!nodes) return undefined;
+    if (meshName && nodes[meshName]) return nodes[meshName];
+    return undefined;
+  }, [nodes, meshName]);
 
   const uniforms = useMemo(
     () => ({
-      colorMap: {
-        value: colors,
-      },
-      brightnessThresholds: {
-        value: thresholds,
-      },
+      colorMap: { value: colors },
+      brightnessThresholds: { value: thresholds },
       lightPosition: { value: new Vector3(15, 15, 15) },
     }),
     [colors, thresholds]
   );
 
-  const targetMesh = useMemo(() => {
-    if (!nodes) return undefined;
-    if (meshName && nodes[meshName] && nodes[meshName].geometry) {
-      return nodes[meshName];
-    }
-    return undefined;
-  }, [nodes, meshName]);
+  const objectToRender = targetMesh || scene;
 
   return (
-    <group {...rest} ref={ref} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={targetMesh?.geometry || undefined}
-        position={[0.33, -0.05, -0.68]}
-      >
-        <shaderMaterial
-          attach="material"
-          {...GhibliShader}
-          uniforms={uniforms}
-        />
-      </mesh>
+    <group ref={ref} {...rest} dispose={null}>
+      <primitive object={objectToRender}>
+        <shaderMaterial attach="material" {...GhibliShader} uniforms={uniforms} />
+      </primitive>
     </group>
   );
 });

@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Model } from "./Model";
-import { Color, MathUtils } from "three";
+import { Color, MathUtils, Box3, Vector3 } from "three";
+import { COLORS } from "../../constants/colors";
 import { SmokeBlobs } from "./SmokeBlobs";
 
 export function Scene() {
   const rootRef = useRef(null);
+  const orbitRef = useRef(null);
   const refHouses = useRef(null);
   const refTreeA = useRef(null);
   const refTreeB = useRef(null);
@@ -32,10 +34,11 @@ export function Scene() {
   });
 
   const targetScalesRef = useRef({
-    houses: 0.04,
-    treeA: 0.087,
-    treeB: 0.087,
-    base: 0.05,
+    houses: 0.075,
+    treeA: 0.075,
+    treeB: 0.075,
+    base: 0.075,
+    dirt: 0.05,
   });
 
   const revealDurationsRef = useRef({
@@ -76,23 +79,16 @@ export function Scene() {
       );
     }
 
-    if (refHouses.current && isRevealed("houses")) {
-      refHouses.current.rotation.y += 0.003;
-    }
-    if (refTreeA.current && isRevealed("treeA")) {
-      refTreeA.current.rotation.y += 0.0025;
-    }
-    if (refTreeB.current && isRevealed("treeB")) {
-      refTreeB.current.rotation.y += 0.002;
+    if (orbitRef.current && isRevealed("houses") && isRevealed("treeA") && isRevealed("treeB")) {
+      orbitRef.current.rotation.y += 0.0015;
     }
     if (refBase.current && isRevealed("base")) {
-      refBase.current.rotation.y += 0.0015;
+      refBase.current.rotation.y += 0.001;
     }
     if (refDirt.current) {
       refDirt.current.rotation.y += 0.001;
     }
 
-    // scale-in reveal animation
     const now = performance.now() / 1000;
     const easeOutCubic = (x) => 1 - Math.pow(1 - x, 3);
     const epsilon = 0.0001;
@@ -165,6 +161,9 @@ export function Scene() {
         setTimeout(() => setShowTrees(true), 130);
       }
     };
+
+    // Ensure initial reveal state matches current scroll position on first load
+    onScrollFallback();
 
     if (observers.length === 0) {
       window.addEventListener("scroll", onScrollFallback, { passive: true });
@@ -251,72 +250,61 @@ export function Scene() {
 
       <Suspense fallback={null}>
         <group ref={rootRef}>
-          {showHouses && (
-            <>
-              <Model
-                ref={refHouses}
-                modelUrl="/Houses.glb"
-                meshName="Houses"
-                position={[-1.5, 1.2, 0]}
-                scale={0.04}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (refHouses.current) refHouses.current.rotation.y += 0.25;
-                }}
-                colors={[
-                  new Color("#C1440E").convertLinearToSRGB(),
-                  new Color("#7A2E1E").convertLinearToSRGB(),
-                  new Color("#FFFFFF").convertLinearToSRGB(),
-                  new Color("#F5F5F5").convertLinearToSRGB(),
-                ]}
-              />
-              {smoke.houses && (
-                <SmokeBlobs origin={[-1.5, 1.2, 0]} duration={2.5} />
-              )}
-            </>
-          )}
+          <group ref={orbitRef} position={[0, 0, 0]}>
+            {showHouses && (
+              <>
+                <Model
+                  ref={refHouses}
+                  modelUrl="/Houses.glb"
+                  meshName="Houses"
+           
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (orbitRef.current) orbitRef.current.rotation.y += 0.25;
+                  }}
+                  colors={COLORS.model.houses.map((hex) =>
+                    new Color(hex).convertLinearToSRGB()
+                  )}
+                />
+                {smoke.houses && (
+                  <SmokeBlobs origin={[0, 0.4, 0]} duration={2.5} />
+                )}
+              </>
+            )}
 
-          {showTrees && (
-            <>
-              <Model
-                ref={refTreeA}
-                modelUrl="/Trees.glb"
-                meshName="Sphere063_1"
-                position={[0, -1.5, 0]}
-                scale={0.087}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (refTreeA.current) refTreeA.current.rotation.y += 0.25;
-                }}
-                colors={[
-                  new Color("#427062").convertLinearToSRGB(),
-                  new Color("#33594E").convertLinearToSRGB(),
-                  new Color("#234549").convertLinearToSRGB(),
-                  new Color("#1E363F").convertLinearToSRGB(),
-                ]}
-              />
-              <Model
-                ref={refTreeB}
-                modelUrl="/Trees.glb"
-                meshName="Sphere063"
-                position={[0, -1.5, 0]}
-                scale={0.087}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (refTreeB.current) refTreeB.current.rotation.y += 0.25;
-                }}
-                colors={[
-                  new Color("#D2B48C").convertLinearToSRGB(),
-                  new Color("#A0522D").convertLinearToSRGB(),
-                  new Color("#8B4513").convertLinearToSRGB(),
-                  new Color("#5D4037").convertLinearToSRGB(),
-                ]}
-              />
-              {smoke.trees && (
-                <SmokeBlobs origin={[0, -1.5, 0]} duration={2.5} />
-              )}
-            </>
-          )}
+            {showTrees && (
+              <>
+                <Model
+                  ref={refTreeA}
+                  modelUrl="/Trees.glb"
+                  meshName="Sphere005_1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (orbitRef.current) orbitRef.current.rotation.y += 0.25;
+                  }}
+                  colors={COLORS.model.treesFoliage.map((hex) =>
+                    new Color(hex).convertLinearToSRGB()
+                  )}
+                />
+                <Model
+                  ref={refTreeB}
+                  modelUrl="/Trees.glb"
+                  meshName="Sphere005"
+
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (orbitRef.current) orbitRef.current.rotation.y += 0.25;
+                  }}
+                  colors={COLORS.model.treesBark.map((hex) =>
+                    new Color(hex).convertLinearToSRGB()
+                  )}
+                />
+                {smoke.trees && (
+                  <SmokeBlobs origin={[0, 0.2, 0]} duration={2.5} />
+                )}
+              </>
+            )}
+          </group>
 
           {showBase && (
             <>
@@ -324,22 +312,16 @@ export function Scene() {
                 ref={refBase}
                 modelUrl="/Base.glb"
                 meshName="Base"
-                position={[0, 1.2, 0]}
-                scale={0.05}
+           
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (refBase.current) refBase.current.rotation.y += 0.25;
+                  if (orbitRef.current) orbitRef.current.rotation.y += 0.25;
                 }}
-                colors={[
-                  new Color("#E8C2A0").convertLinearToSRGB(),
-                  new Color("#D3936B").convertLinearToSRGB(),
-                  new Color("#B86A4B").convertLinearToSRGB(),
-                  new Color("#7A3B2E").convertLinearToSRGB(),
-                ]}
+                colors={COLORS.model.base.map((hex) =>
+                  new Color(hex).convertLinearToSRGB()
+                )}
               />
-              {smoke.base && (
-                <SmokeBlobs origin={[0, 1.2, 0]} duration={2.5} />
-              )}
+              {smoke.base && <SmokeBlobs origin={[0, 0, 0]} duration={2.5} />}
             </>
           )}
 
@@ -347,18 +329,14 @@ export function Scene() {
             ref={refDirt}
             modelUrl="/Dirt.glb"
             meshName="Dirt"
-            position={[0, -3.2, 0]}
             scale={0.05}
             onClick={(e) => {
               e.stopPropagation();
               if (refDirt.current) refDirt.current.rotation.y += 0.25;
             }}
-            colors={[
-              new Color("#C49A6C").convertLinearToSRGB(),
-              new Color("#A47148").convertLinearToSRGB(),
-              new Color("#8B5A2B").convertLinearToSRGB(),
-              new Color("#5D4037").convertLinearToSRGB(),
-            ]}
+            colors={COLORS.model.dirt.map((hex) =>
+              new Color(hex).convertLinearToSRGB()
+            )}
           />
         </group>
       </Suspense>

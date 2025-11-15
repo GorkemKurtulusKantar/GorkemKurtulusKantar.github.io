@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { FiberContainer } from './components/canvas/FiberContainer'
-import CurveDemo from './components/CurveDemo'
 import { ExpandableCardDemo } from './components/ExpandableCardDemo'
 import Navbar from './components/Navbar'
 import Reveal from './components/Reveal'
@@ -17,6 +16,21 @@ function App() {
   const heroContainerRef = useRef(null);
   const servicesContainerRef = useRef(null);
   const [showScrollHint, setShowScrollHint] = useState(true);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    const navEntries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+    const nav = navEntries && navEntries[0];
+    const isReload = nav && nav.type === 'reload';
+    if (isReload) {
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

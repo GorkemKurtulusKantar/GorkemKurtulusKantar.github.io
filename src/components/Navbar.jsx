@@ -46,23 +46,23 @@ const Navbar = () => {
     contact: COLORS.ribbonColors[0],
   };
 
-  const linkClass = 'text-3xl font-black text-white transition-colors block p-4';
+  
   const linkStyle = (id) => (activeSection === id ? { color: sectionColors[id] } : undefined);
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 w-full">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 mt-1">
+        <div className="flex justify-between items-center h-16 mt-1 ms-2">
           {/* Logo/Brand */}
           <div className="flex items-center ">
           <VariableProximity
-              label="Görkem Kantar"
+              label="G2K"
               fromFontVariationSettings="'wght' 700, 'opsz' 14"
               toFontVariationSettings="'wght' 950, 'opsz' 60"
               containerRef={servicesContainerRef}
               radius={100}
               falloff="gaussian"
               href="#home"
-              className={linkClass}
+              className={'text-3xl font-black text-white transition-colors block p-4'}
               style={linkStyle('home')}
             />          </div>
 
@@ -79,7 +79,7 @@ const Navbar = () => {
               radius={100}
               falloff="gaussian"
               href="#about"
-              className={linkClass}
+              className={'text-3xl font-black text-white transition-colors block p-4'}
               style={linkStyle('about')}
             />
 
@@ -93,7 +93,7 @@ const Navbar = () => {
               radius={100}
               falloff="gaussian"
               href="#projects"
-              className={linkClass}
+              className={'text-3xl font-black text-white transition-colors block p-4'}
               style={linkStyle('projects')}
             />
 
@@ -105,7 +105,7 @@ const Navbar = () => {
               radius={100}
               falloff="gaussian"
               href="#contact"
-              className={linkClass}
+              className={'text-3xl font-black text-white transition-colors block p-4'}
               style={linkStyle('contact')}
             />
 
