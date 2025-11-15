@@ -73,7 +73,7 @@ function App() {
 
       {/* About Section */}
       <section id="about" className="relative z-10 min-h-screen flex items-center justify-start px-12 py-16">
-        <Reveal className='flex flex-col lg:flex-row w-full items-center justify-between'>
+        <Reveal className='flex flex-col lg:flex-row w-full items-center justify-between gap-6 lg:gap-0'>
           <About servicesContainerRef={servicesContainerRef} />
           <Experience />
         </Reveal>

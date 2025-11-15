@@ -6,7 +6,7 @@ import GlareHover from "./GlareHover";
 
 const About = ({ servicesContainerRef }) => {
   return (
-    <div className="max-w-4xl text-left flex flex-row">
+    <div className="max-w-4xl text-left flex flex-row bg-neutral-900/80 rounded-3xl shadow-2xl p-6 md:bg-transparent md:rounded-none md:shadow-none md:p-0">
       <div>
         <VariableProximity
           label="Görkem Kurtuluş Kantar"
