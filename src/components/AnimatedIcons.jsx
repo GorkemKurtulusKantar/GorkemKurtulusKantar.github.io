@@ -8,42 +8,54 @@ const AnimatedIcons = () => {
         <Container className="h-10 w-10 circle-6">
           <ReactLogo className="h-10 w-10 text-cyan-400" />
         </Container>
-        <span className="text-white font-medium text-lg">React</span>
+        <span className="hidden md:inline text-white font-medium text-lg">
+          React
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
         <Container className="h-10 w-10 circle-7">
           <GoLogo className="h-10 w-10 text-cyan-300" />
         </Container>
-        <span className="text-white font-medium text-lg">Go</span>
+        <span className="hidden md:inline text-white font-medium text-lg">
+          Go
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
         <Container className="h-12 w-12 circle-8">
           <PythonLogo className="h-8 w-8 text-yellow-400" />
         </Container>
-        <span className="text-white font-medium text-lg">Python</span>
+        <span className="hidden md:inline text-white font-medium text-lg">
+          Python
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
         <Container className="h-10 w-10 circle-9">
           <SpringLogo className="h-8 w-8 text-green-500" />
         </Container>
-        <span className="text-white font-medium text-lg">Spring</span>
+        <span className="hidden md:inline text-white font-medium text-lg">
+          Spring
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
         <Container className="h-10 w-10 circle-10">
           <DockerLogo className="h-8 w-8 text-blue-500" />
         </Container>
-        <span className="text-white font-medium text-lg">Docker</span>
+        <span className="hidden md:inline text-white font-medium text-lg">
+          Docker
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
         <Container className="h-10 w-10 circle-11">
           <TypeScriptLogo className="h-8 w-8 text-blue-600" />
         </Container>
-        <span className="text-white font-medium text-lg">TypeScript</span>
+        <span className="hidden md:inline text-white font-medium text-lg">
+          TypeScript
+        </span>
       </div>
     </div>
   );

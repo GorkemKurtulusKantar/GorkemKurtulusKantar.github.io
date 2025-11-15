@@ -23,7 +23,7 @@ const About = ({ servicesContainerRef }) => {
             applications with React, TypeScript and Go Lang, Python.
           </p>
           <p className="text-base text-gray-400 leading-relaxed max-w-3xl ">
-          
+
           </p>
 
           <GlareHover
@@ -44,7 +44,7 @@ const About = ({ servicesContainerRef }) => {
           </GlareHover>
         </div>
       </div>
-      <div className="ml-12">
+      <div className="ml-12 w-1/4">
         <AnimatedIcons />
       </div>
     </div>

@@ -1,7 +1,4 @@
-
-
-import { useRef, useState, useEffect } from 'react'
-import { FiberContainer } from './components/canvas/FiberContainer'
+import { useRef, useState, useEffect, lazy, Suspense } from 'react'
 import { ExpandableCardDemo } from './components/ExpandableCardDemo'
 import Navbar from './components/Navbar'
 import Reveal from './components/Reveal'
@@ -11,6 +8,12 @@ import Experience from './components/Experience'
 import About from './components/About'
 import Footer from './components/Footer'
 import './index.css'
+
+const FiberContainer = lazy(() =>
+  import('./components/canvas/FiberContainer').then((mod) => ({
+    default: mod.FiberContainer,
+  })),
+)
 
 function App() {
   const heroContainerRef = useRef(null);
@@ -78,7 +81,9 @@ function App() {
   return (
     <div className="relative overflow-hidden ">
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none' }}>
-        <FiberContainer />
+        <Suspense fallback={null}>
+          <FiberContainer />
+        </Suspense>
       </div>
 
       <Navbar />
