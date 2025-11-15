@@ -2,6 +2,7 @@ import { useRef, useState, useEffect, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Model } from "./Model";
 import { Color, MathUtils, Box3, Vector3 } from "three";
+import { Html } from "@react-three/drei";
 import { COLORS } from "../../constants/colors";
 import { SmokeBlobs } from "./SmokeBlobs";
 
@@ -248,7 +249,7 @@ export function Scene() {
         shadow-mapSize-height={4096}
       />
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<Html center wrapperClass="r3f-fallback"><div className="loader"></div></Html>}>
         <group ref={rootRef}>
           <group ref={orbitRef} position={[0, 0, 0]}>
             {showHouses && (

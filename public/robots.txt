@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enissimu.github.io/gorkem_kantar/sitemap.xml
+
+

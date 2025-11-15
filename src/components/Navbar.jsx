@@ -8,6 +8,7 @@ import { COLORS } from '../constants/colors';
 const Navbar = () => {
   const servicesContainerRef = useRef(null);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const sectionIds = ['home', 'about', 'projects', 'contact'];
@@ -128,7 +129,8 @@ const Navbar = () => {
                 type="button"
                 className="text-[#b5b5b5a4] p-2 rounded-md"
                 aria-controls="mobile-menu"
-                aria-expanded="false"
+                aria-expanded={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               >
                 <span className="sr-only">Menüyü aç</span>
                 <svg
@@ -142,7 +144,7 @@ const Navbar = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
+                    d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                   />
                 </svg>
               </button>
@@ -150,6 +152,49 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile navigation menu */}
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="md:hidden bg-black/80 backdrop-blur border-t border-white/10"
+        >
+          <div className="px-4 pt-2 pb-4 space-y-1">
+            <a
+              href="#home"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-semibold text-white py-2"
+              style={linkStyle('home')}
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-semibold text-white py-2"
+              style={linkStyle('about')}
+            >
+              About
+            </a>
+            <a
+              href="#projects"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-semibold text-white py-2"
+              style={linkStyle('projects')}
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-semibold text-white py-2"
+              style={linkStyle('contact')}
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

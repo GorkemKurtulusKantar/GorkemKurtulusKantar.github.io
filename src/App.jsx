@@ -42,6 +42,39 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Update document.title based on visible section (lightweight SEO enhancement)
+  useEffect(() => {
+    const sections = [
+      { id: 'home', title: 'Görkem Kurtuluş Kantar — Portfolio' },
+      { id: 'about', title: 'About — Görkem Kurtuluş Kantar' },
+      { id: 'projects', title: 'Projects — Görkem Kurtuluş Kantar' },
+      { id: 'contact', title: 'Contact — Görkem Kurtuluş Kantar' },
+    ];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let topMost = null;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!topMost || entry.intersectionRatio > topMost.intersectionRatio) {
+              topMost = entry;
+            }
+          }
+        });
+        if (topMost?.target?.id) {
+          const match = sections.find((s) => s.id === topMost.target.id);
+          if (match) document.title = match.title;
+        }
+      },
+      { threshold: [0.25, 0.5, 0.75] }
+    );
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    // initial
+    document.title = sections[0].title;
+    return () => observer.disconnect();
+  }, []);
   return (
     <div className="relative overflow-hidden ">
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none' }}>

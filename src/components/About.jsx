@@ -19,15 +19,11 @@ const About = ({ servicesContainerRef }) => {
         />
         <div className="flex flex-col items-start justify-center gap-4 py-8">
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl ">
-            I&apos;m a full‑stack developer who enjoys building end‑to‑end web
-            applications with React, TypeScript, Node.js and Java. I care about
-            clean, readable code and user interfaces that feel smooth and
-            intuitive.
+            I&apos;m a full‑stack developer who builds end‑to‑end web
+            applications with React, TypeScript and Go Lang, Python.
           </p>
           <p className="text-base text-gray-400 leading-relaxed max-w-3xl ">
-            On GitHub I experiment with realtime features, mobile experiences
-            and well‑structured APIs. I like taking new technologies, learning
-            them quickly, and turning them into practical projects.
+          
           </p>
 
           <GlareHover
