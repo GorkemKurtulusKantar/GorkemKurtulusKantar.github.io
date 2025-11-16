@@ -7,6 +7,7 @@ import VariableProximity from './components/VariableProximity'
 import Experience from './components/Experience'
 import About from './components/About'
 import Footer from './components/Footer'
+import { COLORS } from './constants/colors'
 import './index.css'
 
 const FiberContainer = lazy(() =>
@@ -45,7 +46,6 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Update document.title based on visible section (lightweight SEO enhancement)
   useEffect(() => {
     const sections = [
       { id: 'home', title: 'Görkem Kurtuluş Kantar — Portfolio' },
@@ -89,16 +89,22 @@ function App() {
       <Navbar />
       <Ribbons
         baseThickness={5}
-        colors={['#754d45', "#284261", "#55a058"]}
+        colors={COLORS.ribbonColors}
         speedMultiplier={0.22}
         maxAge={250}
         enableShaderEffect={true}
       />
 
       {/* Hero Section */}
-      <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-end px-4 pb-18">
+      <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-end px-4 pb-18 overflow-hidden">
+        <div id="stars" className="pointer-events-none"></div>
+        <div id="stars2" className="pointer-events-none"></div>
+        <div id="stars3" className="pointer-events-none"></div>
+
         <Reveal >
+
           <div ref={heroContainerRef} className="max-w-4xl mx-auto" >
+
             <div
               id="section05"
               className={`transition-opacity duration-700 ${showScrollHint ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}

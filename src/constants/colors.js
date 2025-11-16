@@ -2,7 +2,7 @@ export const COLORS = {
   primary: '#3B82F6',
   secondary: '#10B981',
   
-  ribbonColors: ['#754d45', '#284261', '#55a058'],
+  ribbonColors: ['#A8C7DB', '#EA6E44', '#AFC179'],
   
   orbitalColors: [
     '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', 
@@ -10,13 +10,6 @@ export const COLORS = {
   ],
   
 
-  
-  pixelColors: {
-    blue: ['#e0f2fe', '#7dd3fc', '#0ea5e9'],
-    yellow: ['#fef08a', '#fde047', '#eab308'],
-    pink: ['#fecdd3', '#fda4af', '#e11d48'],
-    default: ['#f8fafc', '#f1f5f9', '#cbd5e1']
-  },
 
   model: {
     houses:   ['#FFFFFF', '#F5F5F5', '#C1440E', '#7A2E1E'],
