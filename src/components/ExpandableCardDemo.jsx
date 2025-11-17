@@ -208,7 +208,7 @@ style={{position: 'relative'}} >
 }
 
 
-// Project data (from https://github.com/Enissimu?tab=repositories)
+// Project data (from https://github.com/GorkemKurtulusKantar?tab=repositories)
 const cards = [
   {
     title: "LIFT-UP",
@@ -235,7 +235,7 @@ const cards = [
     title: "Fullstack Blog",
     description:
       "Fullstack blog app with React, Express and MongoDB, deployed with CI/CD.",
-    githubLink: "https://github.com/Enissimu/Fullstack-Blog",
+    githubLink: "https://github.com/GorkemKurtulusKantar/Fullstack-Blog",
     technologies: ["React", "Express", "MongoDB", "React Query", "CI/CD"],
     content: () => (
       <p>
@@ -247,7 +247,7 @@ const cards = [
   {
     title: "Patients Typescript",
     description: "Full‑stack TypeScript application for managing patient data.",
-    githubLink: "https://github.com/Enissimu/Patients-Typescript",
+    githubLink: "https://github.com/GorkemKurtulusKantar/Patients-Typescript",
     technologies: ["TypeScript", "Node.js", "React"],
     content: () => (
       <p>
@@ -261,7 +261,7 @@ const cards = [
     description:
       "Chrome extension that blocks Twitter accounts containing words you choose.",
     src: "https://images.unsplash.com/photo-1517260911058-0fcfd733702f?w=1200&auto=format&fit=crop&q=60",
-    githubLink: "https://github.com/Enissimu/TwitterWordBlocker",
+    githubLink: "https://github.com/GorkemKurtulusKantar/TwitterWordBlocker",
     technologies: ["JavaScript", "Chrome Extension"],
     content: () => (
       <p>
@@ -274,7 +274,7 @@ const cards = [
     title: "Native Repo App",
     description: "React Native app for browsing GitHub repositories.",
     src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&q=60",
-    githubLink: "https://github.com/Enissimu/Native-Repo-App",
+    githubLink: "https://github.com/GorkemKurtulusKantar/Native-Repo-App",
     technologies: ["React Native", "Expo", "GitHub API"],
     content: () => (
       <p>

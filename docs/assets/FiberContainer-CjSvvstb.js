@@ -1,4 +1,4 @@
-import{V as L,C as S,r as t,u as V,j as e,b as U,H as I,M as O,d as Y,O as _}from"./three-GazOUCAN.js";import{C}from"./index-B8CCuYAE.js";import"./motion-CUOx85fv.js";const X={uniforms:{colorMap:{value:[new S("#427062"),new S("#33594E"),new S("#234549"),new S("#1E363F")]},brightnessThresholds:{value:[.9,.45,.001]},lightPosition:{value:new L(15,15,15)}},vertexShader:`
+import{V as L,C as S,r as t,u as V,j as e,b as U,H as I,M as O,d as Y,O as _}from"./three-GazOUCAN.js";import{C}from"./index-CP9tW_Ma.js";import"./motion-CUOx85fv.js";const X={uniforms:{colorMap:{value:[new S("#427062"),new S("#33594E"),new S("#234549"),new S("#1E363F")]},brightnessThresholds:{value:[.9,.45,.001]},lightPosition:{value:new L(15,15,15)}},vertexShader:`
     // Set the precision for data types used in this shader
     precision highp float;
     precision highp int;
