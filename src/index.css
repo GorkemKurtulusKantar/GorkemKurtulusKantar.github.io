@@ -169,10 +169,10 @@ html {
 
 @keyframes animStar {
   from {
-    transform: translateY(0px);
+    transform: translateY(0px) scale(2);
   }
   to {
-    transform: translateY(-2000px);
+    transform: translateY(-2000px) scale(2);
   }
 }
 
@@ -184,6 +184,7 @@ html {
   left: 0;
   width: 1px;
   height: 1px;
+  transform-origin: top left;
 }
 
 
