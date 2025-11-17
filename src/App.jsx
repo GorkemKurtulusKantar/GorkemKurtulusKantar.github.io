@@ -100,7 +100,6 @@ function App() {
         <div id="stars" className="pointer-events-none"></div>
         <div id="stars2" className="pointer-events-none"></div>
         <div id="stars3" className="pointer-events-none"></div>
-
         <Reveal >
 
           <div ref={heroContainerRef} className="max-w-4xl mx-auto" >
@@ -117,9 +116,16 @@ function App() {
 
       {/* About Section */}
       <section id="about" className="relative z-10 min-h-screen flex items-center justify-start px-12 py-16">
-        <Reveal className='flex flex-col lg:flex-row w-full items-center justify-between gap-6 lg:gap-0'>
+        <Reveal className='flex flex-col xl:flex-row w-full items-center justify-between gap-6 lg:gap-0 backdrop-blur-md sm:rounded-3xl p-6'>
+          <div className='xl:w-1/4'>
+
           <About servicesContainerRef={servicesContainerRef} />
+          </div>
+          <div className='xl:w-1/4'>
+
           <Experience />
+          </div>
+
         </Reveal>
       </section>
 
@@ -129,8 +135,8 @@ function App() {
 
       {/* Services Section */}
       <section id="projects" className="relative z-10 min-h-screen  flex items-center justify-center md:justify-end px-12 py-16">
-        <Reveal className='w-2/3 px-4'>
-          <div ref={servicesContainerRef} className="  text-end " >
+      <Reveal className="w-2/3 px-4 backdrop-blur-md md:backdrop-blur-none rounded-3xl">
+      <div ref={servicesContainerRef} className="  text-end " >
             <div >
             <VariableProximity
               label="Projects"
@@ -144,9 +150,7 @@ function App() {
             </div>
             <div>
             <ExpandableCardDemo />
-
             </div>
-
           </div>
         </Reveal>
       </section>

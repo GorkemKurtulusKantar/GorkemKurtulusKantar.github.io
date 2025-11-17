@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { useOutsideClick } from "../hooks/UseOutsideClick";
 import VariableProximity from "./VariableProximity";
-import { Github } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 
 export function ExpandableCardDemo() {
   const [active, setActive] = useState(null);
@@ -110,17 +110,32 @@ export function ExpandableCardDemo() {
                         Live Demo
                       </motion.a>
                     )}
-                    {active.githubLink && (
-                      <motion.a
-                        layoutId={`github-button-${active.title}-${id}`}
-                        href={active.githubLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center gap-2 rounded-full bg-gray-800 hover:bg-gray-900 px-4 py-2 text-sm font-bold text-white transition-colors"
-                      >
-                        <Github size={16} />
-                        Code
-                      </motion.a>
+                    {Array.isArray(active.githubLinks) && active.githubLinks.length > 0 ? (
+                      active.githubLinks.map((link, index) => (
+                        <motion.a
+                          key={`github-link-${active.title}-${index}`}
+                          href={link.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 rounded-full bg-gray-800 hover:bg-gray-900 px-4 py-2 text-sm font-bold text-white transition-colors"
+                        >
+                          <Github size={16} />
+                          {link.label || "Code"}
+                        </motion.a>
+                      ))
+                    ) : (
+                      active.githubLink && (
+                        <motion.a
+                          layoutId={`github-button-${active.title}-${id}`}
+                          href={active.githubLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 rounded-full bg-gray-800 hover:bg-gray-900 px-4 py-2 text-sm font-bold text-white transition-colors"
+                        >
+                          <Github size={16} />
+                          Code
+                        </motion.a>
+                      )
                     )}
                   </div>
                 </div>
@@ -163,13 +178,13 @@ export function ExpandableCardDemo() {
       </AnimatePresence>
 
       {/* List */}
-      <ul className=" w-full  ">
+      <ul className=" w-full   ">
         {cards.map((card) => (
           <li key={`li-${card.title}-${id}`}>
             <motion.div
               layoutId={`card-${card.title}-${id}`}
               onClick={() => setActive(card)}
-              className="flex cursor-pointer flex-col justify-between rounded-xl p-4 md:flex-row md:justify-end "
+              className="flex cursor-pointer flex-col justify-between rounded-xl p-4 md:flex-row md:justify-end  "
             >
                 <motion.div className="flex flex-col md:flex-row "  ref={containerRef}
 style={{position: 'relative'}} >
@@ -183,10 +198,7 @@ style={{position: 'relative'}} >
                   className="text-3xl my-4s "
                   disabled={!!active}
                 />
-
               </motion.div>
-
-    
             </motion.div>
           </li>
         ))}
@@ -199,12 +211,30 @@ style={{position: 'relative'}} >
 // Project data (from https://github.com/Enissimu?tab=repositories)
 const cards = [
   {
+    title: "LIFT-UP",
+    description:
+      "Technological Competency Tracking and Evaluation Platform",
+    githubLinks: [
+      {
+        label: "Server",
+        href: "https://github.com/batuberksahin/barb-server",
+      },
+      {
+        label: "Client",
+        href: "https://github.com/onryldzz/barb-ui-2", 
+      },
+    ],
+    technologies: ["React", "Material UI","redux", "Java Spring Boot", "PostgreSQL"],
+    content: () => (
+      <p>
+        Technological Competency Tracking and Evaluation Platform built with the MERN stack, featuring React Query, routing. 
+      </p>
+    ),
+  },
+  {
     title: "Fullstack Blog",
     description:
       "Fullstack blog app with React, Express and MongoDB, deployed with CI/CD.",
-    src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Source",
-    ctaLink: "https://github.com/Enissimu/Fullstack-Blog",
     githubLink: "https://github.com/Enissimu/Fullstack-Blog",
     technologies: ["React", "Express", "MongoDB", "React Query", "CI/CD"],
     content: () => (
@@ -217,14 +247,11 @@ const cards = [
   {
     title: "Patients Typescript",
     description: "Full‑stack TypeScript application for managing patient data.",
-    src: "https://images.unsplash.com/photo-1535916707207-35f97e715e1b?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Source",
-    ctaLink: "https://github.com/Enissimu/Patients-Typescript",
     githubLink: "https://github.com/Enissimu/Patients-Typescript",
     technologies: ["TypeScript", "Node.js", "React"],
     content: () => (
       <p>
-        End‑to‑end TypeScript project covering backend and frontend, focused on
+ Fullstack TypeScript project covering backend and frontend, focused on typed APIs and patient records.
         typed APIs and patient records.
       </p>
     ),
@@ -234,8 +261,6 @@ const cards = [
     description:
       "Chrome extension that blocks Twitter accounts containing words you choose.",
     src: "https://images.unsplash.com/photo-1517260911058-0fcfd733702f?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Source",
-    ctaLink: "https://github.com/Enissimu/TwitterWordBlocker",
     githubLink: "https://github.com/Enissimu/TwitterWordBlocker",
     technologies: ["JavaScript", "Chrome Extension"],
     content: () => (
@@ -249,8 +274,6 @@ const cards = [
     title: "Native Repo App",
     description: "React Native app for browsing GitHub repositories.",
     src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&q=60",
-    ctaText: "Source",
-    ctaLink: "https://github.com/Enissimu/Native-Repo-App",
     githubLink: "https://github.com/Enissimu/Native-Repo-App",
     technologies: ["React Native", "Expo", "GitHub API"],
     content: () => (

@@ -1,25 +1,19 @@
-import { COLORS } from '../constants/colors';
-
 const TimeLine = () => {
   const timelineItems = [
     {
       date: '2023 – Present',
       title: 'Software Developer – Ustunova',
       description:
-        'Working as a software developer at Ustunova, building web applications and services using modern JavaScript/TypeScript and backend technologies.',
-      color: COLORS.ribbonColors[2] // Blue
+        'Worked 2 years as a software developer at Ustunova, building web applications and services using React and Python.',
     },
     
     {
       date: '2020 – 2025',
       title: 'Ankara University – Computer Engineering',
-
-      color: COLORS.ribbonColors[1] // Teal
     },
     {
       date: '2015 – 2019',
       title: 'Ankara Atatürk Lisesi, Ankara',
-      color: COLORS.ribbonColors[0] // Red
     }
    
   ];
@@ -31,20 +25,6 @@ const TimeLine = () => {
     >
       {timelineItems.map((item, index) => (
         <li key={index} className="relative -ms-1.5 flex items-start gap-4">
-          <span 
-            className="size-3 shrink-0 rounded-full bg-white transition-all duration-300 ease-in-out  hover:scale-125 hover:shadow-lg"
-            style={{
-              '--hover-color': item.color
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = item.color;
-              e.target.style.boxShadow = `0 0 20px ${item.color}40`;
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'white';
-              e.target.style.boxShadow = 'none';
-            }}
-          ></span>
 
           <div className="-mt-2">
             <time className="text-xs/none font-medium text-gray-400">{item.date}</time>
