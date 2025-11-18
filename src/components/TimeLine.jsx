@@ -19,9 +19,9 @@ const TimeLine = () => {
   ];
 
   return (
-  <div className="bg-neutral-900/80 rounded-3xl shadow-2xl p-6 md:bg-transparent md:rounded-none md:shadow-none md:p-0">
+  <div className="bg-neutral-900/80 rounded-3xl shadow-2xl p-6 md:bg-transparent md:rounded-none md:shadow-none md:p-0 w-full">
     <ol
-      className="relative space-y-8 before:absolute before:-ml-px before:h-full before:w-0.5 before:rounded-full before:bg-gray-600"
+      className="relative space-y-8  before:-ml-px before:h-full before:w-0.5 before:rounded-full before:bg-gray-600"
     >
       {timelineItems.map((item, index) => (
         <li key={index} className="relative -ms-1.5 flex items-start gap-4">

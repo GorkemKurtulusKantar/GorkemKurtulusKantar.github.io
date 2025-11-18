@@ -4,8 +4,8 @@ import Navbar from './components/Navbar'
 import Reveal from './components/Reveal'
 import Ribbons from './components/Ribbons'
 import VariableProximity from './components/VariableProximity'
-import Experience from './components/Experience'
 import About from './components/About'
+import TimeLine from './components/timeLine'
 import Footer from './components/Footer'
 import { COLORS } from './constants/colors'
 import './index.css'
@@ -115,15 +115,15 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative z-10 min-h-screen flex items-center justify-start px-12 py-16">
-        <Reveal className='flex flex-col xl:flex-row w-full items-center justify-between gap-6 lg:gap-0 backdrop-blur-md sm:rounded-3xl p-6'>
+      <section id="about" className="relative z-10 min-h-screen flex items-center justify-start md:px-12 py-16">
+        <Reveal className='flex flex-col xl:flex-row w-full items-center justify-between gap-6 lg:gap-0 xl:backdrop-blur-none backdrop-blur-lg sm:rounded-3xl p-6'>
           <div className='xl:w-1/4'>
 
           <About servicesContainerRef={servicesContainerRef} />
           </div>
-          <div className='xl:w-1/4'>
+          <div className='xl:w-1/4 '>
+          <TimeLine />
 
-          <Experience />
           </div>
 
         </Reveal>
@@ -134,8 +134,8 @@ function App() {
 
 
       {/* Services Section */}
-      <section id="projects" className="relative z-10 min-h-screen  flex items-center justify-center md:justify-end px-12 py-16">
-      <Reveal className="w-2/3 px-4 backdrop-blur-md md:backdrop-blur-none rounded-3xl">
+      <section id="projects" className="relative z-10 min-h-screen  flex items-center  md:backdrop-blur-none backdrop-blur-lg justify-center md:justify-end px-12 py-16">
+      <Reveal className="md:w-2/3 px-4  rounded-3xl">
       <div ref={servicesContainerRef} className="  text-end " >
             <div >
             <VariableProximity
