@@ -4,8 +4,8 @@ import Navbar from './components/Navbar'
 import Reveal from './components/Reveal'
 import Ribbons from './components/Ribbons'
 import VariableProximity from './components/VariableProximity'
-import Experience from './components/Experience'
 import About from './components/About'
+import TimeLine from './components/timeLine'
 import Footer from './components/Footer'
 import { COLORS } from './constants/colors'
 import './index.css'
@@ -100,7 +100,6 @@ function App() {
         <div id="stars" className="pointer-events-none"></div>
         <div id="stars2" className="pointer-events-none"></div>
         <div id="stars3" className="pointer-events-none"></div>
-
         <Reveal >
 
           <div ref={heroContainerRef} className="max-w-4xl mx-auto" >
@@ -116,10 +115,17 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative z-10 min-h-screen flex items-center justify-start px-12 py-16">
-        <Reveal className='flex flex-col lg:flex-row w-full items-center justify-between gap-6 lg:gap-0'>
+      <section id="about" className="relative z-10 min-h-screen flex items-center justify-start md:px-12 py-16">
+        <Reveal className='flex flex-col xl:flex-row w-full items-center justify-between gap-6 lg:gap-0 xl:backdrop-blur-none backdrop-blur-lg sm:rounded-3xl p-6'>
+          <div className='xl:w-1/4'>
+
           <About servicesContainerRef={servicesContainerRef} />
-          <Experience />
+          </div>
+          <div className='xl:w-1/4 '>
+          <TimeLine />
+
+          </div>
+
         </Reveal>
       </section>
 
@@ -128,9 +134,9 @@ function App() {
 
 
       {/* Services Section */}
-      <section id="projects" className="relative z-10 min-h-screen  flex items-center justify-center md:justify-end px-12 py-16">
-        <Reveal className='w-2/3 px-4'>
-          <div ref={servicesContainerRef} className="  text-end " >
+      <section id="projects" className="relative z-10 min-h-screen  flex items-center  md:backdrop-blur-none backdrop-blur-lg justify-center md:justify-end px-12 py-16">
+      <Reveal className="md:w-2/3 px-4  rounded-3xl">
+      <div ref={servicesContainerRef} className="  text-end " >
             <div >
             <VariableProximity
               label="Projects"
@@ -144,9 +150,7 @@ function App() {
             </div>
             <div>
             <ExpandableCardDemo />
-
             </div>
-
           </div>
         </Reveal>
       </section>

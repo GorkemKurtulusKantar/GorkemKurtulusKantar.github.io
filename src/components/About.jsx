@@ -19,8 +19,7 @@ const About = ({ servicesContainerRef }) => {
         />
         <div className="flex flex-col items-start justify-center gap-4 py-8">
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl ">
-            I&apos;m a full‑stack developer who builds end‑to‑end web
-            applications with React, TypeScript and Go Lang, Python.
+            I&apos;m a full‑stack developer based on Ankara Turkey. Mostly working with React, TypeScript, Python and Go Lang.
           </p>
           <p className="text-base text-gray-400 leading-relaxed max-w-3xl ">
 

@@ -48,7 +48,7 @@ const Footer = () => {
                 Instagram
               </a>
               <a 
-                href="https://github.com/Enissimu" 
+                href="https://github.com/GorkemKurtulusKantar" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary underline hover:text-black transition-colors font-semibold">

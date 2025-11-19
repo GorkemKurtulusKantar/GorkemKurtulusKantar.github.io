@@ -35,11 +35,11 @@ export function Scene() {
   });
 
   const targetScalesRef = useRef({
-    houses: 0.075,
-    treeA: 0.075,
-    treeB: 0.075,
-    base: 0.075,
-    dirt: 0.05,
+    houses: 0.050,
+    treeA: 0.050,
+    treeB: 0.050,
+    base: 0.050,
+    dirt: 0.039,
   });
 
   const revealDurationsRef = useRef({
@@ -49,7 +49,6 @@ export function Scene() {
     base: 0.9,
   });
 
-  // track mouse globally so background can react even though canvas is behind HTML
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -64,7 +63,6 @@ export function Scene() {
   useFrame(() => {
     const isRevealed = (key) => revealStartRef.current[key] === null;
 
-    // smooth overall scene rotation based on mouse position
     if (rootRef.current) {
       const targetRotY = mouseTargetRef.current.x * 0.4;
       const targetRotX = -mouseTargetRef.current.y * 0.2;
@@ -163,7 +161,6 @@ export function Scene() {
       }
     };
 
-    // Ensure initial reveal state matches current scroll position on first load
     onScrollFallback();
 
     if (observers.length === 0) {
@@ -180,7 +177,6 @@ export function Scene() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // When model becomes shown, initialize reveal animation from tiny scale
   useEffect(() => {
     if (showHouses && refHouses.current && !revealStartRef.current.houses) {
       refHouses.current.scale.setScalar(0.0001);
@@ -206,7 +202,6 @@ export function Scene() {
     }
   }, [showBase]);
 
-  // trigger short smoke bursts when models first appear
   useEffect(() => {
     if (!showHouses) return;
     setSmoke((prev) => ({ ...prev, houses: true }));
@@ -250,7 +245,7 @@ export function Scene() {
       />
 
       <Suspense fallback={<Html center wrapperClass="r3f-fallback"><div className="loader"></div></Html>}>
-        <group ref={rootRef}>
+        <group ref={rootRef} position={[0, 0, 0]}>
           <group ref={orbitRef} position={[0, 0, 0]}>
             {showHouses && (
               <>
@@ -330,7 +325,7 @@ export function Scene() {
             ref={refDirt}
             modelUrl="/Dirt.glb"
             meshName="Dirt"
-            scale={0.05}
+            scale={0.049}
             onClick={(e) => {
               e.stopPropagation();
               if (refDirt.current) refDirt.current.rotation.y += 0.25;
