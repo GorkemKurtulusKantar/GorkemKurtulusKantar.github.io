@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="512"
+    height="512"
+    viewBox="0 0 512 512"
+>
+  <!-- Background (transparent, remove rect if you want full transparency) -->
+  <!-- <rect width="512" height="512" fill="white"/> -->
+
+  <!-- Group for ornamental G -->
+  <g transform="translate(80, 420)">
+    <!-- Outer decorative stroke -->
+    <text x="0" y="0"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="360"
+          fill="none"
+          stroke="black"
+          stroke-width="18"
+          stroke-linejoin="round">
+      G
+    </text>
+
+    <!-- Middle stroke -->
+    <text x="0" y="0"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="360"
+          fill="none"
+          stroke="black"
+          stroke-width="10"
+          stroke-linejoin="round">
+      G
+    </text>
+
+    <!-- Inner stroke (gives multi-line engraved look) -->
+    <text x="0" y="0"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="360"
+          fill="none"
+          stroke="black"
+          stroke-width="4"
+          stroke-linejoin="round">
+      G
+    </text>
+  </g>
+</svg>
